@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>عرض مشروع يد العون - الباك إند</title>
+  <title>عرض مشروع يد العون - مسار الباك إند</title>
   <style>
     :root {
       --bg: #ffffff;
@@ -18,7 +18,7 @@
       font-family: "Segoe UI", Tahoma, Arial, sans-serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.7;
+      line-height: 1.75;
     }
     .page {
       max-width: 1100px;
@@ -26,7 +26,7 @@
       padding: 32px 24px 60px;
     }
     .title {
-      font-size: 34px;
+      font-size: 32px;
       font-weight: 800;
       margin: 0 0 6px;
     }
@@ -72,35 +72,30 @@
       text-align: left;
       font-size: 13px;
     }
-    .qa {
-      border-top: 1px dashed var(--border);
-      padding-top: 10px;
-      margin-top: 10px;
+    .flow {
+      border-right: 3px solid var(--accent);
+      padding-right: 12px;
+      margin: 8px 0;
     }
-    .footer {
-      margin-top: 30px;
-      font-size: 12px;
-      color: var(--muted);
-      text-align: center;
-    }
+    .qa { border-top: 1px dashed var(--border); padding-top: 10px; margin-top: 10px; }
+    .footer { margin-top: 30px; font-size: 12px; color: var(--muted); text-align: center; }
   </style>
 </head>
 <body>
   <div class="page">
-    <div class="title">عرض مشروع يد العون - الباك إند</div>
-    <div class="subtitle">الشرح مكتوب بصيغتي أنا (ميرنا) وبأسلوب بسيط ومنظم</div>
+    <div class="title">مشروع يد العون - مسار الباك إند</div>
+    <div class="subtitle">شرح تفصيلي لمسار العمل وما يحدث في النظام خطوة بخطوة</div>
 
     <div class="section">
-      <h2>مين أنا عملت إيه؟ (مختصر واضح)</h2>
+      <h2>ملخص سريع</h2>
       <p>
-        أنا اشتغلت على الباك إند لمشروع "يد العون". بنيت API كاملة وربطتها بقاعدة بيانات SQL Server،
-        وعملت تسجيل مستخدمين بأدوار مختلفة، وتسجيل دخول بتوكن JWT للأمان. وكمان وفّرت واجهات للتبرعات
-        والرسائل والإشعارات والمطابقة. التوثيق كله جاهز على Swagger عشان الفرونت يشتغل مباشرة.
+        الباك إند عبارة عن مجموعة واجهات API مسؤولة عن تسجيل المستخدمين، تسجيل الدخول، إدارة التبرعات،
+        الرسائل، الإشعارات، والمطابقة. كل طلب يمر على طبقة الأمان (JWT) ثم يتعامل مع قاعدة البيانات.
       </p>
     </div>
 
     <div class="section">
-      <h2>التقنيات اللي استخدمتها</h2>
+      <h2>التقنيات المستخدمة</h2>
       <div class="grid">
         <div class="card">ASP.NET Core Web API</div>
         <div class="card">Entity Framework Core</div>
@@ -112,7 +107,7 @@
     </div>
 
     <div class="section">
-      <h2>هيكل المشروع (منظم)</h2>
+      <h2>هيكل المشروع</h2>
       <div class="code">yad-elawn/
 ├─ frontend/
 ├─ backend/
@@ -121,131 +116,124 @@
 ├─ database/
 ├─ docs/
 </div>
-      <p class="muted">قسمت الريبو بوضوح عشان أي حد في الفريق يعرف يوصل بسرعة لكل جزء.</p>
     </div>
 
     <div class="section">
-      <h2>الواجهات الأساسية (APIs)</h2>
+      <h2>مسار العمل للمستخدم الجديد (User Journey)</h2>
+      <div class="flow">
+        1) المستخدم يختار نوعه (متبرع/جمعية/مستفيد/أدمن).
+      </div>
+      <div class="flow">
+        2) يرسل طلب تسجيل إلى:
+        <div class="code">POST /api/registrations/{role}</div>
+        النظام يحفظ المستخدم في جدول المستخدمين ويضيفه في جدول الدور المناسب.
+      </div>
+      <div class="flow">
+        3) بعد التسجيل، المستخدم يعمل تسجيل دخول:
+        <div class="code">POST /api/auth/login</div>
+        الباك إند يتحقق من الإيميل والباسورد (المشفر) ويرجع Token.
+      </div>
+      <div class="flow">
+        4) أي طلب محمي لازم يتبعت مع الهيدر:
+        <div class="code">Authorization: Bearer &lt;TOKEN&gt;</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>مسار التبرع (Donation Flow)</h2>
+      <div class="flow">1) المتبرع يعمل Login ويحصل على Token.</div>
+      <div class="flow">
+        2) ينشئ تبرع جديد:
+        <div class="code">POST /api/donations</div>
+      </div>
+      <div class="flow">
+        3) الباك إند ينشئ سجل في جدول Donation ويضيف تفاصيل النوع (Food/Clothes/Medicine/Medical_Supplies).
+      </div>
+      <div class="flow">
+        4) يمكن تحديث الحالة:
+        <div class="code">PATCH /api/donations/{id}/status</div>
+      </div>
+      <div class="flow">
+        5) عرض التبرعات المتاحة:
+        <div class="code">GET /api/donations/available</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>مسار الرسائل والإشعارات</h2>
+      <div class="flow">
+        الرسائل:
+        <div class="code">POST /api/messages</div>
+        <div class="code">GET /api/messages/inbox/{userId}</div>
+      </div>
+      <div class="flow">
+        الإشعارات:
+        <div class="code">POST /api/notifications</div>
+        <div class="code">GET /api/notifications/{userId}</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>مسار المطابقة (Matches)</h2>
+      <div class="flow">
+        إنشاء مطابقة بين تبرع وجمعية ومستفيد:
+        <div class="code">POST /api/matches</div>
+      </div>
+      <div class="flow">
+        عرض المطابقات:
+        <div class="code">GET /api/matches</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>ما الذي يحدث داخل الباك إند (تقنيًا)</h2>
+      <ul>
+        <li>كل طلب يدخل Controller مناسب.</li>
+        <li>التحقق من البيانات يتم عبر DTOs.</li>
+        <li>يتم الحفظ في الداتابيز عبر EF Core.</li>
+        <li>الطلبات المحمية تمر على JWT Middleware.</li>
+        <li>أي استجابة يتم تحويلها لـ JSON بشكل آمن.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>الواجهات الأساسية</h2>
       <div class="grid">
-        <div class="card">
-          <div class="label">تسجيل الدخول</div>
-          <div class="code">POST /api/auth/login</div>
-        </div>
-        <div class="card">
-          <div class="label">التسجيل حسب الدور</div>
-          <div class="code">POST /api/registrations/donor
-POST /api/registrations/charity
-POST /api/registrations/beneficiary
-POST /api/registrations/admin</div>
-        </div>
-        <div class="card">
-          <div class="label">التبرعات</div>
-          <div class="code">GET /api/donations
-GET /api/donations/{id}
-GET /api/donations/available
-POST /api/donations
-PATCH /api/donations/{id}/status</div>
-        </div>
-        <div class="card">
-          <div class="label">المواقع</div>
-          <div class="code">GET /api/locations
-GET /api/locations/{id}
-POST /api/locations</div>
-        </div>
-        <div class="card">
-          <div class="label">الرسائل</div>
-          <div class="code">GET /api/messages/inbox/{userId}
-POST /api/messages</div>
-        </div>
-        <div class="card">
-          <div class="label">الإشعارات</div>
-          <div class="code">GET /api/notifications/{userId}
-POST /api/notifications</div>
-        </div>
-        <div class="card">
-          <div class="label">المطابقات</div>
-          <div class="code">GET /api/matches
-POST /api/matches</div>
-        </div>
+        <div class="card"><div class="label">الدخول</div><div class="code">POST /api/auth/login</div></div>
+        <div class="card"><div class="label">التسجيل</div><div class="code">POST /api/registrations/*</div></div>
+        <div class="card"><div class="label">التبرعات</div><div class="code">/api/donations</div></div>
+        <div class="card"><div class="label">الرسائل</div><div class="code">/api/messages</div></div>
+        <div class="card"><div class="label">الإشعارات</div><div class="code">/api/notifications</div></div>
+        <div class="card"><div class="label">المطابقات</div><div class="code">/api/matches</div></div>
       </div>
-      <p class="muted">الواجهات المحمية تتطلب إرسال التوكن في الهيدر.</p>
-      <div class="code">Authorization: Bearer &lt;TOKEN&gt;</div>
     </div>
 
     <div class="section">
-      <h2>الأمان</h2>
+      <h2>التحديات والحلول</h2>
       <ul>
-        <li>الباسورد يتخزن مشفر باستخدام BCrypt.</li>
-        <li>الـ JWT Token بيضمن إن أي طلب محمي لازم يكون من مستخدم مسجل دخول.</li>
+        <li><span class="label">Swagger لا يظهر:</span> تم ضبط إعداداته ليظهر على المسار الرئيسي.</li>
+        <li><span class="label">خطأ 500 في التبرع:</span> حل دورة JSON باستخدام IgnoreCycles.</li>
+        <li><span class="label">اختلاف أسماء الجداول:</span> تم تثبيت أسماء الجداول في EF Core.</li>
       </ul>
     </div>
 
     <div class="section">
-      <h2>التحديات اللي قابلتني وحليتها</h2>
-      <ul>
-        <li><span class="label">مشكلة ظهور Swagger:</span> كانت مش بتظهر، أصلحت إعدادات المسار وخليتها تفتح على الصفحة الرئيسية.</li>
-        <li><span class="label">خطأ 500 في التبرعات:</span> بسبب دورة مرجعية في JSON، حليتها بـ IgnoreCycles.</li>
-        <li><span class="label">اختلاف أسماء الجداول:</span> ثبتّ أسماء الجداول يدويًا في EF Core عشان التطابق مع الداتابيز.</li>
-      </ul>
+      <h2>سؤال وجواب (احتمالات الأسئلة)</h2>
+      <div class="qa"><div class="label">س: إزاي الفرونت يستخدم الـ API؟</div><div>ج: Register → Login → يستخدم التوكن في الهيدر لأي طلب محمي.</div></div>
+      <div class="qa"><div class="label">س: ليه استخدمنا JWT؟</div><div>ج: عشان الأمان ولتأكيد هوية المستخدم.</div></div>
+      <div class="qa"><div class="label">س: الباسورد بيتخزن إزاي؟</div><div>ج: مشفر بـ BCrypt.</div></div>
+      <div class="qa"><div class="label">س: ليه فصلنا الجداول حسب الدور؟</div><div>ج: عشان كل دور له خصائص مختلفة وتسهيل التحكم.</div></div>
+      <div class="qa"><div class="label">س: إزاي نعرض التبرعات المتاحة؟</div><div>ج: باستخدام GET /api/donations/available.</div></div>
+      <div class="qa"><div class="label">س: لو واجهنا 500 Error؟</div><div>ج: نراجع اللوج ونحدد هل المشكلة في الداتابيز أو في الموديل أو في الـ JSON.</div></div>
+      <div class="qa"><div class="label">س: هل النظام جاهز للتسليم؟</div><div>ج: نعم، تم اختبار التسجيل والدخول والتبرعات والرسائل والإشعارات والمطابقات.</div></div>
     </div>
 
     <div class="section">
-      <h2>أسئلة متوقعة وإجاباتها (بصيغة ميرنا)</h2>
-
-      <div class="qa">
-        <div class="label">س: إزاي الفرونت يشتغل على الباك إند؟</div>
-        <div>ج: أولًا يعمل Register، بعد كده Login ياخد التوكن، وبعدين يبعت التوكن في أي طلب محمي.</div>
-      </div>
-
-      <div class="qa">
-        <div class="label">س: ليه استخدمتي JWT؟</div>
-        <div>ج: عشان يبقى في أمان، ومافيش حد يقدر يستخدم الـ API من غير تسجيل دخول.</div>
-      </div>
-
-      <div class="qa">
-        <div class="label">س: الباسورد بيتخزن إزاي؟</div>
-        <div>ج: بيتشفّر بـ BCrypt، يعني مش بيتخزن نص صريح في الداتابيز.</div>
-      </div>
-
-      <div class="qa">
-        <div class="label">س: إيه الفرق بين Donor وCharity وBeneficiary؟</div>
-        <div>ج: كل دور ليه جدول وربط مختلف في الداتابيز، والتسجيل بيحدد الـ UserType بشكل واضح.</div>
-      </div>
-
-      <div class="qa">
-        <div class="label">س: إيه اللي بيخلّي التبرع يظهر في متاح؟</div>
-        <div>ج: حالة التبرع Status، ولو كانت "Available" يظهر في فلتر التبرعات المتاحة.</div>
-      </div>
-
-      <div class="qa">
-        <div class="label">س: التوثيق فين؟</div>
-        <div>ج: على Swagger في الصفحة الرئيسية: http://localhost:5000/</div>
-      </div>
-
-      <div class="qa">
-        <div class="label">س: لو حصل خطأ 500 تاني، هتعملي إيه؟</div>
-        <div>ج: هراجع الـ Logs وأشوف هل المشكلة من الداتابيز ولا من الـ Model أو من Serialization، وأصلح السبب.</div>
-      </div>
-
-      <div class="qa">
-        <div class="label">س: هل الباك إند جاهز للتسليم؟</div>
-        <div>ج: أيوه، اتعملت اختبارات لكل المسارات الأساسية واشتغلت بنجاح.</div>
-      </div>
-
-      <div class="qa">
-        <div class="label">س: عملتي اختبار عملي؟</div>
-        <div>ج: أيوه، جرّبت التسجيل، الدخول، التبرعات، الرسائل، الإشعارات، والمطابقة وكلهم اشتغلوا.</div>
-      </div>
+      <h2>الخلاصة</h2>
+      <p>تم تسليم باك إند كامل ومؤمّن ومُوثّق، ويمكن للفرونت العمل عليه مباشرة.</p>
     </div>
 
-    <div class="section">
-      <h2>الخلاصة (جملة قصيرة أقولها)</h2>
-      <p>
-        أنا سلمت باك إند كامل ومؤمّن ومُوثّق، والفرونت يقدر يبدأ يشتغل عليه مباشرة بدون مشاكل.
-      </p>
-    </div>
-
-    <div class="footer">تقرير الباك إند — إعداد ميرنا</div>
+    <div class="footer">تقرير الباك إند — جاهز للعرض</div>
   </div>
 </body>
 </html>
