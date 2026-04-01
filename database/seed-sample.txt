@@ -1,0 +1,81 @@
+﻿----ALTER TABLE [User] ADD UserType VARCHAR(20) CHECK (UserType IN ('Donor', 'Charity', 'Beneficiary', 'Admin'));
+------ 1. توليد 1000 مستخدم في جدول User وجدول Donor
+----DECLARE @i INT = 1;
+----WHILE @i <= 1000
+----BEGIN
+----    INSERT INTO [User] (FName, LName, Email, Password, Phone, Address, UserType)
+----    VALUES (
+----        'FirstName' + CAST(@i AS VARCHAR), 
+----        'LastName' + CAST(@i AS VARCHAR), 
+----        'user' + CAST(@i AS VARCHAR) + '@example.com', 
+----        'password123', 
+----        '010' + CAST(@i AS VARCHAR), 
+----        'Street ' + CAST(@i AS VARCHAR), 
+----        'Donor'
+----    );
+
+----    -- ربط اليوزر بجدول الـ Donor (باستخدام أخر ID نزل)
+----    INSERT INTO Donor (DonorID, Donation_Count) 
+----    VALUES (SCOPE_IDENTITY(), 0);
+
+----    SET @i = @i + 1;
+----END
+---- 1. تنظيف الجداول القديمة لتجنب تكرار الـ IDs
+--DELETE FROM Food;
+--DELETE FROM Donation;
+--DELETE FROM Donor;
+--DELETE FROM [User];
+--DELETE FROM Location;
+
+---- 2. إضافة 5 مواقع أساسية نضمن وجودهم
+--INSERT INTO Location (City_Area, GPS_Coordinates) VALUES 
+--('Cairo', '30.0, 31.2'), ('Giza', '30.0, 31.1'), ('Alex', '31.2, 29.9'), ('Mansoura', '31.0, 31.3'), ('Tanta', '30.7, 31.0');
+
+---- 3. تعريف متغيرات للـ Loop
+--DECLARE @Counter INT = 1;
+--DECLARE @UserID INT;
+--DECLARE @LocID INT;
+--DECLARE @DonationID INT;
+
+---- 4. حلقة تكرار لعمل 1000 سطر
+--WHILE @Counter <= 1000
+--BEGIN
+--    -- اختار LocationID عشوائي من الـ 5 اللي ضفناهم (عشان ميعملش Conflict)
+--    SET @LocID = (SELECT TOP 1 LocationID FROM Location ORDER BY NEWID());
+
+--    -- إضافة مستخدم (User)
+--    INSERT INTO [User] (FName, LName, Email, Password, Phone, Address, UserType)
+--    VALUES (
+--        'UserFN' + CAST(@Counter AS VARCHAR), 
+--        'UserLN' + CAST(@Counter AS VARCHAR), 
+--        'user' + CAST(@Counter AS VARCHAR) + '@charity.com', 
+--        'pass123', 
+--        '010' + RIGHT('0000000' + CAST(@Counter AS VARCHAR), 8), 
+--        'Street ' + CAST(@Counter AS VARCHAR), 
+--        'Donor'
+--    );
+    
+--    SET @UserID = SCOPE_IDENTITY(); -- حفظ الـ ID بتاع اليوزر اللي لسه نازل
+
+--    -- إضافة المتبرع (Donor)
+--    INSERT INTO Donor (DonorID, Donation_Count) VALUES (@UserID, 1);
+
+--    -- إضافة التبرع (Donation) وربطه بالـ User والـ Location الصح
+--    INSERT INTO Donation (Status, Image, DonorID, LocationID)
+--    VALUES ('Available', 'img' + CAST(@Counter AS VARCHAR) + '.jpg', @UserID, @LocID);
+    
+--    SET @DonationID = SCOPE_IDENTITY(); -- حفظ الـ ID بتاع التبرع
+
+--    -- إضافة تفاصيل التبرع في جدول Food
+--    INSERT INTO Food (DonationID, Product_Name, Food_Type, Category, Expiry_Date, Quantity, Storage_Condition)
+--    VALUES (@DonationID, 'Food Box ' + CAST(@Counter AS VARCHAR), 'Canned', 'Dry goods', DATEADD(year, 1, GETDATE()), '5 KG', 'Dry Place');
+
+--    SET @Counter = @Counter + 1;
+--END
+
+---- 5. التأكد من عدد السطور اللي انضافت
+--SELECT 'Total Users' as TableName, COUNT(*) as Count FROM [User]
+--UNION
+--SELECT 'Total Donations', COUNT(*) FROM Donation
+--UNION
+--SELECT 'Total Food Items', COUNT(*) FROM Food;
