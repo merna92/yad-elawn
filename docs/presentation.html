@@ -18,7 +18,7 @@
       font-family: "Segoe UI", Tahoma, Arial, sans-serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.6;
+      line-height: 1.7;
     }
     .page {
       max-width: 1100px;
@@ -26,13 +26,13 @@
       padding: 32px 24px 60px;
     }
     .title {
-      font-size: 36px;
+      font-size: 34px;
       font-weight: 800;
-      margin: 0 0 8px;
+      margin: 0 0 6px;
     }
     .subtitle {
       color: var(--muted);
-      margin: 0 0 24px;
+      margin: 0 0 22px;
     }
     .section {
       border: 1px solid var(--border);
@@ -42,7 +42,7 @@
     }
     .section h2 {
       margin: 0 0 12px;
-      font-size: 22px;
+      font-size: 20px;
       border-right: 4px solid var(--accent);
       padding-right: 10px;
     }
@@ -72,15 +72,10 @@
       text-align: left;
       font-size: 13px;
     }
-    .shot {
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 10px;
-    }
-    .shot img {
-      width: 100%;
-      height: auto;
-      border-radius: 8px;
+    .qa {
+      border-top: 1px dashed var(--border);
+      padding-top: 10px;
+      margin-top: 10px;
     }
     .footer {
       margin-top: 30px;
@@ -92,24 +87,20 @@
 </head>
 <body>
   <div class="page">
-    <div class="title">مشروع يد العون - الباك إند</div>
-    <div class="subtitle">عرض احترافي يوضح ما تم تنفيذه في الباك إند مع التوثيق والتحديات والحلول</div>
+    <div class="title">عرض مشروع يد العون - الباك إند</div>
+    <div class="subtitle">الشرح مكتوب بصيغتي أنا (ميرنا) وبأسلوب بسيط ومنظم</div>
 
     <div class="section">
-      <h2>نظرة عامة</h2>
+      <h2>مين أنا عملت إيه؟ (مختصر واضح)</h2>
       <p>
-        منصة تبرعات تربط المتبرعين والجمعيات والمستفيدين. تم بناء باك إند كامل وربطه بقاعدة بيانات SQL Server
-        مع توفير توثيق وتجربة مباشرة للواجهات.
+        أنا اشتغلت على الباك إند لمشروع "يد العون". بنيت API كاملة وربطتها بقاعدة بيانات SQL Server،
+        وعملت تسجيل مستخدمين بأدوار مختلفة، وتسجيل دخول بتوكن JWT للأمان. وكمان وفّرت واجهات للتبرعات
+        والرسائل والإشعارات والمطابقة. التوثيق كله جاهز على Swagger عشان الفرونت يشتغل مباشرة.
       </p>
-      <div class="grid">
-        <div class="card"><span class="label">الهدف:</span> منصة تبرعات متكاملة</div>
-        <div class="card"><span class="label">الدور:</span> مطور باك إند</div>
-        <div class="card"><span class="label">الناتج:</span> واجهات API جاهزة للفرونت</div>
-      </div>
     </div>
 
     <div class="section">
-      <h2>التقنيات المستخدمة</h2>
+      <h2>التقنيات اللي استخدمتها</h2>
       <div class="grid">
         <div class="card">ASP.NET Core Web API</div>
         <div class="card">Entity Framework Core</div>
@@ -121,7 +112,7 @@
     </div>
 
     <div class="section">
-      <h2>هيكل المشروع</h2>
+      <h2>هيكل المشروع (منظم)</h2>
       <div class="code">yad-elawn/
 ├─ frontend/
 ├─ backend/
@@ -130,23 +121,11 @@
 ├─ database/
 ├─ docs/
 </div>
-      <div class="shot">
-        <img src="assets/repo_structure.png" alt="هيكل المشروع" />
-      </div>
+      <p class="muted">قسمت الريبو بوضوح عشان أي حد في الفريق يعرف يوصل بسرعة لكل جزء.</p>
     </div>
 
     <div class="section">
-      <h2>التوثيق والتجربة</h2>
-      <p>تم نشر واجهة التوثيق على المسار الرئيسي لتسهيل التجربة.</p>
-      <div class="code">http://localhost:5000/</div>
-      <div class="grid">
-        <div class="shot"><img src="assets/swagger_home.png" alt="واجهة التوثيق" /></div>
-        <div class="shot"><img src="assets/swagger_fixed.png" alt="واجهة التوثيق بعد الإصلاح" /></div>
-      </div>
-    </div>
-
-    <div class="section">
-      <h2>الواجهات الأساسية</h2>
+      <h2>الواجهات الأساسية (APIs)</h2>
       <div class="grid">
         <div class="card">
           <div class="label">تسجيل الدخول</div>
@@ -196,65 +175,73 @@ POST /api/matches</div>
     <div class="section">
       <h2>الأمان</h2>
       <ul>
-        <li>تشفير كلمات المرور باستخدام BCrypt.</li>
-        <li>JWT لتأمين الوصول للواجهات المحمية.</li>
+        <li>الباسورد يتخزن مشفر باستخدام BCrypt.</li>
+        <li>الـ JWT Token بيضمن إن أي طلب محمي لازم يكون من مستخدم مسجل دخول.</li>
       </ul>
     </div>
 
     <div class="section">
-      <h2>التحديات والحلول</h2>
-      <div class="grid">
-        <div class="card">
-          <div class="label">مشكلة عدم ظهور التوثيق</div>
-          <div class="muted">الحل:</div>
-          <ul>
-            <li>تثبيت مسارات التوثيق وضبط الإعدادات.</li>
-            <li>تقديم واجهة التوثيق على المسار الرئيسي.</li>
-          </ul>
-          <div class="shot"><img src="assets/swagger_error.png" alt="خطأ التوثيق" /></div>
-        </div>
-        <div class="card">
-          <div class="label">خطأ 500 في إنشاء التبرع</div>
-          <div class="muted">الحل:</div>
-          <ul>
-            <li>حل مشكلة التكرار المرجعي في JSON.</li>
-            <li>اعتماد IgnoreCycles في إعدادات الإخراج.</li>
-          </ul>
-        </div>
-        <div class="card">
-          <div class="label">اختلاف أسماء الجداول</div>
-          <div class="muted">الحل:</div>
-          <ul>
-            <li>تثبيت أسماء الجداول يدويًا في إعدادات ORM.</li>
-          </ul>
-          <div class="code">modelBuilder.Entity&lt;Donor&gt;().ToTable("Donor")</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="section">
-      <h2>نتائج الاختبارات</h2>
+      <h2>التحديات اللي قابلتني وحليتها</h2>
       <ul>
-        <li>نجاح تسجيل المستخدمين لكل الأدوار.</li>
-        <li>نجاح تسجيل الدخول وإرجاع التوكن.</li>
-        <li>نجاح إنشاء التبرعات والرسائل والإشعارات والمطابقات.</li>
+        <li><span class="label">مشكلة ظهور Swagger:</span> كانت مش بتظهر، أصلحت إعدادات المسار وخليتها تفتح على الصفحة الرئيسية.</li>
+        <li><span class="label">خطأ 500 في التبرعات:</span> بسبب دورة مرجعية في JSON، حليتها بـ IgnoreCycles.</li>
+        <li><span class="label">اختلاف أسماء الجداول:</span> ثبتّ أسماء الجداول يدويًا في EF Core عشان التطابق مع الداتابيز.</li>
       </ul>
     </div>
 
     <div class="section">
-      <h2>لقطات عملية</h2>
-      <div class="grid">
-        <div class="shot"><img src="assets/register_success.png" alt="نجاح التسجيل" /></div>
-        <div class="shot"><img src="assets/login_success.png" alt="نجاح تسجيل الدخول" /></div>
-        <div class="shot"><img src="assets/db_erd.png" alt="ERD" /></div>
+      <h2>أسئلة متوقعة وإجاباتها (بصيغة ميرنا)</h2>
+
+      <div class="qa">
+        <div class="label">س: إزاي الفرونت يشتغل على الباك إند؟</div>
+        <div>ج: أولًا يعمل Register، بعد كده Login ياخد التوكن، وبعدين يبعت التوكن في أي طلب محمي.</div>
+      </div>
+
+      <div class="qa">
+        <div class="label">س: ليه استخدمتي JWT؟</div>
+        <div>ج: عشان يبقى في أمان، ومافيش حد يقدر يستخدم الـ API من غير تسجيل دخول.</div>
+      </div>
+
+      <div class="qa">
+        <div class="label">س: الباسورد بيتخزن إزاي؟</div>
+        <div>ج: بيتشفّر بـ BCrypt، يعني مش بيتخزن نص صريح في الداتابيز.</div>
+      </div>
+
+      <div class="qa">
+        <div class="label">س: إيه الفرق بين Donor وCharity وBeneficiary؟</div>
+        <div>ج: كل دور ليه جدول وربط مختلف في الداتابيز، والتسجيل بيحدد الـ UserType بشكل واضح.</div>
+      </div>
+
+      <div class="qa">
+        <div class="label">س: إيه اللي بيخلّي التبرع يظهر في متاح؟</div>
+        <div>ج: حالة التبرع Status، ولو كانت "Available" يظهر في فلتر التبرعات المتاحة.</div>
+      </div>
+
+      <div class="qa">
+        <div class="label">س: التوثيق فين؟</div>
+        <div>ج: على Swagger في الصفحة الرئيسية: http://localhost:5000/</div>
+      </div>
+
+      <div class="qa">
+        <div class="label">س: لو حصل خطأ 500 تاني، هتعملي إيه؟</div>
+        <div>ج: هراجع الـ Logs وأشوف هل المشكلة من الداتابيز ولا من الـ Model أو من Serialization، وأصلح السبب.</div>
+      </div>
+
+      <div class="qa">
+        <div class="label">س: هل الباك إند جاهز للتسليم؟</div>
+        <div>ج: أيوه، اتعملت اختبارات لكل المسارات الأساسية واشتغلت بنجاح.</div>
+      </div>
+
+      <div class="qa">
+        <div class="label">س: عملتي اختبار عملي؟</div>
+        <div>ج: أيوه، جرّبت التسجيل، الدخول، التبرعات، الرسائل، الإشعارات، والمطابقة وكلهم اشتغلوا.</div>
       </div>
     </div>
 
     <div class="section">
-      <h2>الخلاصة</h2>
+      <h2>الخلاصة (جملة قصيرة أقولها)</h2>
       <p>
-        تم تسليم باك إند كامل وموثق وقابل للاستخدام مباشرة من فريق الفرونت.
-        النظام مستقر ومؤمّن وقابل للتوسعة مستقبلًا.
+        أنا سلمت باك إند كامل ومؤمّن ومُوثّق، والفرونت يقدر يبدأ يشتغل عليه مباشرة بدون مشاكل.
       </p>
     </div>
 
