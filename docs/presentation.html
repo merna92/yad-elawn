@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>عرض مشروع يد العون - Backend</title>
+  <title>عرض مشروع يد العون - الباك إند</title>
   <style>
     :root {
       --bg: #ffffff;
@@ -88,41 +88,40 @@
       color: var(--muted);
       text-align: center;
     }
-    .divider { height: 1px; background: var(--border); margin: 18px 0; }
   </style>
 </head>
 <body>
   <div class="page">
-    <div class="title">مشروع يد العون - Backend API</div>
-    <div class="subtitle">عرض احترافي يوضح ما تم تنفيذه في الباك إند + التوثيق + التحديات والحلول</div>
+    <div class="title">مشروع يد العون - الباك إند</div>
+    <div class="subtitle">عرض احترافي يوضح ما تم تنفيذه في الباك إند مع التوثيق والتحديات والحلول</div>
 
     <div class="section">
       <h2>نظرة عامة</h2>
       <p>
-        "يد العون" منصة تبرعات تربط المتبرعين والجمعيات والمستفيدين. تم بناء Back‑End كامل
-        باستخدام ASP.NET Core Web API وربطه بقاعدة بيانات SQL Server مع توفير التوثيق عبر Swagger.
+        منصة تبرعات تربط المتبرعين والجمعيات والمستفيدين. تم بناء باك إند كامل وربطه بقاعدة بيانات SQL Server
+        مع توفير توثيق وتجربة مباشرة للواجهات.
       </p>
       <div class="grid">
         <div class="card"><span class="label">الهدف:</span> منصة تبرعات متكاملة</div>
-        <div class="card"><span class="label">الدور:</span> Backend Developer</div>
-        <div class="card"><span class="label">الناتج:</span> API جاهزة للفرونت</div>
+        <div class="card"><span class="label">الدور:</span> مطور باك إند</div>
+        <div class="card"><span class="label">الناتج:</span> واجهات API جاهزة للفرونت</div>
       </div>
     </div>
 
     <div class="section">
       <h2>التقنيات المستخدمة</h2>
       <div class="grid">
-        <div class="card">ASP.NET Core Web API (.NET 10)</div>
+        <div class="card">ASP.NET Core Web API</div>
         <div class="card">Entity Framework Core</div>
         <div class="card">SQL Server</div>
         <div class="card">JWT Authentication</div>
-        <div class="card">BCrypt Password Hashing</div>
-        <div class="card">Swagger UI & OpenAPI</div>
+        <div class="card">BCrypt لتشفير كلمات المرور</div>
+        <div class="card">Swagger لتوثيق وتجربة الواجهات</div>
       </div>
     </div>
 
     <div class="section">
-      <h2>هيكل المشروع (Repo Structure)</h2>
+      <h2>هيكل المشروع</h2>
       <div class="code">yad-elawn/
 ├─ frontend/
 ├─ backend/
@@ -132,114 +131,101 @@
 ├─ docs/
 </div>
       <div class="shot">
-        <img src="assets/repo_structure.png" alt="repo structure" />
+        <img src="assets/repo_structure.png" alt="هيكل المشروع" />
       </div>
     </div>
 
     <div class="section">
-      <h2>تدفق التوثيق (Swagger)</h2>
+      <h2>التوثيق والتجربة</h2>
+      <p>تم نشر واجهة التوثيق على المسار الرئيسي لتسهيل التجربة.</p>
+      <div class="code">http://localhost:5000/</div>
       <div class="grid">
-        <div class="shot"><img src="assets/swagger_home.png" alt="swagger home" /></div>
-        <div class="shot"><img src="assets/swagger_fixed.png" alt="swagger fixed" /></div>
+        <div class="shot"><img src="assets/swagger_home.png" alt="واجهة التوثيق" /></div>
+        <div class="shot"><img src="assets/swagger_fixed.png" alt="واجهة التوثيق بعد الإصلاح" /></div>
       </div>
-      <div class="code">Swagger URL: http://localhost:5000/</div>
     </div>
 
     <div class="section">
-      <h2>التوثيق الوظيفي للـ API</h2>
+      <h2>الواجهات الأساسية</h2>
       <div class="grid">
         <div class="card">
-          <div class="label">Auth</div>
-          <ul>
-            <li>POST /api/auth/login</li>
-          </ul>
+          <div class="label">تسجيل الدخول</div>
+          <div class="code">POST /api/auth/login</div>
         </div>
         <div class="card">
-          <div class="label">Registrations</div>
-          <ul>
-            <li>POST /api/registrations/donor</li>
-            <li>POST /api/registrations/charity</li>
-            <li>POST /api/registrations/beneficiary</li>
-            <li>POST /api/registrations/admin</li>
-          </ul>
+          <div class="label">التسجيل حسب الدور</div>
+          <div class="code">POST /api/registrations/donor
+POST /api/registrations/charity
+POST /api/registrations/beneficiary
+POST /api/registrations/admin</div>
         </div>
         <div class="card">
-          <div class="label">Donations</div>
-          <ul>
-            <li>GET /api/donations</li>
-            <li>GET /api/donations/{id}</li>
-            <li>GET /api/donations/available</li>
-            <li>POST /api/donations (Protected)</li>
-            <li>PATCH /api/donations/{id}/status (Protected)</li>
-          </ul>
+          <div class="label">التبرعات</div>
+          <div class="code">GET /api/donations
+GET /api/donations/{id}
+GET /api/donations/available
+POST /api/donations
+PATCH /api/donations/{id}/status</div>
         </div>
         <div class="card">
-          <div class="label">Locations</div>
-          <ul>
-            <li>GET /api/locations</li>
-            <li>GET /api/locations/{id}</li>
-            <li>POST /api/locations</li>
-          </ul>
+          <div class="label">المواقع</div>
+          <div class="code">GET /api/locations
+GET /api/locations/{id}
+POST /api/locations</div>
         </div>
         <div class="card">
-          <div class="label">Messages</div>
-          <ul>
-            <li>GET /api/messages/inbox/{userId} (Protected)</li>
-            <li>POST /api/messages (Protected)</li>
-          </ul>
+          <div class="label">الرسائل</div>
+          <div class="code">GET /api/messages/inbox/{userId}
+POST /api/messages</div>
         </div>
         <div class="card">
-          <div class="label">Notifications</div>
-          <ul>
-            <li>GET /api/notifications/{userId} (Protected)</li>
-            <li>POST /api/notifications (Protected)</li>
-          </ul>
+          <div class="label">الإشعارات</div>
+          <div class="code">GET /api/notifications/{userId}
+POST /api/notifications</div>
         </div>
         <div class="card">
-          <div class="label">Matches</div>
-          <ul>
-            <li>GET /api/matches (Protected)</li>
-            <li>POST /api/matches (Protected)</li>
-          </ul>
+          <div class="label">المطابقات</div>
+          <div class="code">GET /api/matches
+POST /api/matches</div>
         </div>
       </div>
+      <p class="muted">الواجهات المحمية تتطلب إرسال التوكن في الهيدر.</p>
+      <div class="code">Authorization: Bearer &lt;TOKEN&gt;</div>
     </div>
 
     <div class="section">
-      <h2>الأمان والتوثيق</h2>
+      <h2>الأمان</h2>
       <ul>
         <li>تشفير كلمات المرور باستخدام BCrypt.</li>
-        <li>JWT Token للتصديق على الطلبات المحمية.</li>
-        <li>Swagger لتوثيق كامل الـ API وتجربتها مباشرة.</li>
+        <li>JWT لتأمين الوصول للواجهات المحمية.</li>
       </ul>
-      <div class="code">Authorization: Bearer &lt;TOKEN&gt;</div>
     </div>
 
     <div class="section">
       <h2>التحديات والحلول</h2>
       <div class="grid">
         <div class="card">
-          <div class="label">مشكلة Swagger Invalid</div>
+          <div class="label">مشكلة عدم ظهور التوثيق</div>
           <div class="muted">الحل:</div>
           <ul>
-            <li>ضبط إعدادات Swagger UI وتثبيت المسار.</li>
-            <li>تقديم Swagger على الجذر لسهولة الوصول.</li>
+            <li>تثبيت مسارات التوثيق وضبط الإعدادات.</li>
+            <li>تقديم واجهة التوثيق على المسار الرئيسي.</li>
           </ul>
-          <div class="shot"><img src="assets/swagger_error.png" alt="swagger error" /></div>
+          <div class="shot"><img src="assets/swagger_error.png" alt="خطأ التوثيق" /></div>
         </div>
         <div class="card">
-          <div class="label">500 Error في إنشاء تبرع</div>
+          <div class="label">خطأ 500 في إنشاء التبرع</div>
           <div class="muted">الحل:</div>
           <ul>
-            <li>حل مشكلة cycle في JSON باستخدام ReferenceHandler.IgnoreCycles.</li>
-            <li>إعادة هيكلة الاستجابة لتفادي التكرار.</li>
+            <li>حل مشكلة التكرار المرجعي في JSON.</li>
+            <li>اعتماد IgnoreCycles في إعدادات الإخراج.</li>
           </ul>
         </div>
         <div class="card">
-          <div class="label">Mismatch في أسماء الجداول</div>
+          <div class="label">اختلاف أسماء الجداول</div>
           <div class="muted">الحل:</div>
           <ul>
-            <li>تثبيت أسماء الجداول يدويًا في EF Core.</li>
+            <li>تثبيت أسماء الجداول يدويًا في إعدادات ORM.</li>
           </ul>
           <div class="code">modelBuilder.Entity&lt;Donor&gt;().ToTable("Donor")</div>
         </div>
@@ -247,32 +233,32 @@
     </div>
 
     <div class="section">
-      <h2>اختبارات النجاح</h2>
+      <h2>نتائج الاختبارات</h2>
       <ul>
-        <li>Register لكل دور + Login ناجح.</li>
-        <li>إنشاء تبرع (Food) ناجح.</li>
-        <li>إنشاء رسالة + إشعار + Match.</li>
+        <li>نجاح تسجيل المستخدمين لكل الأدوار.</li>
+        <li>نجاح تسجيل الدخول وإرجاع التوكن.</li>
+        <li>نجاح إنشاء التبرعات والرسائل والإشعارات والمطابقات.</li>
       </ul>
     </div>
 
     <div class="section">
       <h2>لقطات عملية</h2>
       <div class="grid">
-        <div class="shot"><img src="assets/register_success.png" alt="register success" /></div>
-        <div class="shot"><img src="assets/login_success.png" alt="login success" /></div>
-        <div class="shot"><img src="assets/db_erd.png" alt="db erd" /></div>
+        <div class="shot"><img src="assets/register_success.png" alt="نجاح التسجيل" /></div>
+        <div class="shot"><img src="assets/login_success.png" alt="نجاح تسجيل الدخول" /></div>
+        <div class="shot"><img src="assets/db_erd.png" alt="ERD" /></div>
       </div>
     </div>
 
     <div class="section">
       <h2>الخلاصة</h2>
       <p>
-        تم تسليم Back‑End كامل وموثّق، قابل للاستخدام مباشرة من فريق الفرونت.
-        النظام مستقر، محمي، وقابل للتوسعة مستقبلًا.
+        تم تسليم باك إند كامل وموثق وقابل للاستخدام مباشرة من فريق الفرونت.
+        النظام مستقر ومؤمّن وقابل للتوسعة مستقبلًا.
       </p>
     </div>
 
-    <div class="footer">Yad ElAwn Backend Report — Generated by Merna</div>
+    <div class="footer">تقرير الباك إند — إعداد ميرنا</div>
   </div>
 </body>
 </html>
