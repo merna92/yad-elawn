@@ -1,0 +1,278 @@
+﻿<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>عرض مشروع يد العون - Backend</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #0d0d0d;
+      --muted: #5b5b5b;
+      --accent: #111111;
+      --border: #e6e6e6;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 24px 60px;
+    }
+    .title {
+      font-size: 36px;
+      font-weight: 800;
+      margin: 0 0 8px;
+    }
+    .subtitle {
+      color: var(--muted);
+      margin: 0 0 24px;
+    }
+    .section {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      margin: 16px 0;
+    }
+    .section h2 {
+      margin: 0 0 12px;
+      font-size: 22px;
+      border-right: 4px solid var(--accent);
+      padding-right: 10px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 12px;
+    }
+    .card {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+      background: #fff;
+    }
+    .label { font-weight: 700; }
+    .muted { color: var(--muted); }
+    ul { margin: 8px 0 0 0; padding: 0 18px 0 0; }
+    li { margin: 6px 0; }
+    .code {
+      font-family: Consolas, "Courier New", monospace;
+      background: #f7f7f7;
+      border: 1px solid var(--border);
+      padding: 10px;
+      border-radius: 8px;
+      overflow-x: auto;
+      direction: ltr;
+      text-align: left;
+      font-size: 13px;
+    }
+    .shot {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 10px;
+    }
+    .shot img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+    .footer {
+      margin-top: 30px;
+      font-size: 12px;
+      color: var(--muted);
+      text-align: center;
+    }
+    .divider { height: 1px; background: var(--border); margin: 18px 0; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="title">مشروع يد العون - Backend API</div>
+    <div class="subtitle">عرض احترافي يوضح ما تم تنفيذه في الباك إند + التوثيق + التحديات والحلول</div>
+
+    <div class="section">
+      <h2>نظرة عامة</h2>
+      <p>
+        "يد العون" منصة تبرعات تربط المتبرعين والجمعيات والمستفيدين. تم بناء Back‑End كامل
+        باستخدام ASP.NET Core Web API وربطه بقاعدة بيانات SQL Server مع توفير التوثيق عبر Swagger.
+      </p>
+      <div class="grid">
+        <div class="card"><span class="label">الهدف:</span> منصة تبرعات متكاملة</div>
+        <div class="card"><span class="label">الدور:</span> Backend Developer</div>
+        <div class="card"><span class="label">الناتج:</span> API جاهزة للفرونت</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>التقنيات المستخدمة</h2>
+      <div class="grid">
+        <div class="card">ASP.NET Core Web API (.NET 10)</div>
+        <div class="card">Entity Framework Core</div>
+        <div class="card">SQL Server</div>
+        <div class="card">JWT Authentication</div>
+        <div class="card">BCrypt Password Hashing</div>
+        <div class="card">Swagger UI & OpenAPI</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>هيكل المشروع (Repo Structure)</h2>
+      <div class="code">yad-elawn/
+├─ frontend/
+├─ backend/
+│  └─ api/YadElAwn.Api/
+├─ ai/
+├─ database/
+├─ docs/
+</div>
+      <div class="shot">
+        <img src="assets/repo_structure.png" alt="repo structure" />
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>تدفق التوثيق (Swagger)</h2>
+      <div class="grid">
+        <div class="shot"><img src="assets/swagger_home.png" alt="swagger home" /></div>
+        <div class="shot"><img src="assets/swagger_fixed.png" alt="swagger fixed" /></div>
+      </div>
+      <div class="code">Swagger URL: http://localhost:5000/</div>
+    </div>
+
+    <div class="section">
+      <h2>التوثيق الوظيفي للـ API</h2>
+      <div class="grid">
+        <div class="card">
+          <div class="label">Auth</div>
+          <ul>
+            <li>POST /api/auth/login</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="label">Registrations</div>
+          <ul>
+            <li>POST /api/registrations/donor</li>
+            <li>POST /api/registrations/charity</li>
+            <li>POST /api/registrations/beneficiary</li>
+            <li>POST /api/registrations/admin</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="label">Donations</div>
+          <ul>
+            <li>GET /api/donations</li>
+            <li>GET /api/donations/{id}</li>
+            <li>GET /api/donations/available</li>
+            <li>POST /api/donations (Protected)</li>
+            <li>PATCH /api/donations/{id}/status (Protected)</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="label">Locations</div>
+          <ul>
+            <li>GET /api/locations</li>
+            <li>GET /api/locations/{id}</li>
+            <li>POST /api/locations</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="label">Messages</div>
+          <ul>
+            <li>GET /api/messages/inbox/{userId} (Protected)</li>
+            <li>POST /api/messages (Protected)</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="label">Notifications</div>
+          <ul>
+            <li>GET /api/notifications/{userId} (Protected)</li>
+            <li>POST /api/notifications (Protected)</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="label">Matches</div>
+          <ul>
+            <li>GET /api/matches (Protected)</li>
+            <li>POST /api/matches (Protected)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>الأمان والتوثيق</h2>
+      <ul>
+        <li>تشفير كلمات المرور باستخدام BCrypt.</li>
+        <li>JWT Token للتصديق على الطلبات المحمية.</li>
+        <li>Swagger لتوثيق كامل الـ API وتجربتها مباشرة.</li>
+      </ul>
+      <div class="code">Authorization: Bearer &lt;TOKEN&gt;</div>
+    </div>
+
+    <div class="section">
+      <h2>التحديات والحلول</h2>
+      <div class="grid">
+        <div class="card">
+          <div class="label">مشكلة Swagger Invalid</div>
+          <div class="muted">الحل:</div>
+          <ul>
+            <li>ضبط إعدادات Swagger UI وتثبيت المسار.</li>
+            <li>تقديم Swagger على الجذر لسهولة الوصول.</li>
+          </ul>
+          <div class="shot"><img src="assets/swagger_error.png" alt="swagger error" /></div>
+        </div>
+        <div class="card">
+          <div class="label">500 Error في إنشاء تبرع</div>
+          <div class="muted">الحل:</div>
+          <ul>
+            <li>حل مشكلة cycle في JSON باستخدام ReferenceHandler.IgnoreCycles.</li>
+            <li>إعادة هيكلة الاستجابة لتفادي التكرار.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="label">Mismatch في أسماء الجداول</div>
+          <div class="muted">الحل:</div>
+          <ul>
+            <li>تثبيت أسماء الجداول يدويًا في EF Core.</li>
+          </ul>
+          <div class="code">modelBuilder.Entity&lt;Donor&gt;().ToTable("Donor")</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>اختبارات النجاح</h2>
+      <ul>
+        <li>Register لكل دور + Login ناجح.</li>
+        <li>إنشاء تبرع (Food) ناجح.</li>
+        <li>إنشاء رسالة + إشعار + Match.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>لقطات عملية</h2>
+      <div class="grid">
+        <div class="shot"><img src="assets/register_success.png" alt="register success" /></div>
+        <div class="shot"><img src="assets/login_success.png" alt="login success" /></div>
+        <div class="shot"><img src="assets/db_erd.png" alt="db erd" /></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>الخلاصة</h2>
+      <p>
+        تم تسليم Back‑End كامل وموثّق، قابل للاستخدام مباشرة من فريق الفرونت.
+        النظام مستقر، محمي، وقابل للتوسعة مستقبلًا.
+      </p>
+    </div>
+
+    <div class="footer">Yad ElAwn Backend Report — Generated by Merna</div>
+  </div>
+</body>
+</html>
