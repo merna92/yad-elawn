@@ -1,8 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using YadElAwn.Api.Data;
+using Microsoft.AspNetCore.Mvc;
 using YadElAwn.Api.Dtos;
-using YadElAwn.Api.Models;
 using YadElAwn.Api.Services;
 
 namespace YadElAwn.Api.Controllers;
@@ -11,171 +8,82 @@ namespace YadElAwn.Api.Controllers;
 [Route("api/registrations")]
 public class RegistrationsController : ControllerBase
 {
-    private readonly ApplicationDbContext _db;
-    private readonly IPasswordHasher _hasher;
+    private readonly IRegistrationService _registrations;
 
-    public RegistrationsController(ApplicationDbContext db, IPasswordHasher hasher)
+    public RegistrationsController(IRegistrationService registrations)
     {
-        _db = db;
-        _hasher = hasher;
+        _registrations = registrations;
     }
 
     [HttpPost("donor")]
     public async Task<IActionResult> RegisterDonor(RegisterDonorRequest request)
     {
-        var exists = await _db.Users.AnyAsync(u => u.Email == request.Email);
-        if (exists)
+        try
         {
-            return Conflict("Email already exists.");
+            var result = await _registrations.RegisterDonorAsync(request);
+            return Ok(new { userId = result.UserId, donorId = result.RelatedId });
         }
-
-        var user = new User
+        catch (InvalidOperationException ex)
         {
-            FName = request.FName,
-            LName = request.LName,
-            Email = request.Email,
-            Password = _hasher.Hash(request.Password),
-            Phone = request.Phone,
-            Address = request.Address,
-            IsVerified = true,
-            UserType = "Donor"
-        };
-
-        _db.Users.Add(user);
-        await _db.SaveChangesAsync();
-
-        var donor = new Donor
+            return Conflict(ex.Message);
+        }
+        catch (Exception ex)
         {
-            DonorId = user.UserId,
-            DonationCount = 0
-        };
-
-        _db.Donors.Add(donor);
-        await _db.SaveChangesAsync();
-
-        return Ok(new { user.UserId, donor.DonorId });
+            return StatusCode(500, ex.Message);
+        }
     }
 
     [HttpPost("charity")]
     public async Task<IActionResult> RegisterCharity(RegisterCharityRequest request)
     {
-        var exists = await _db.Users.AnyAsync(u => u.Email == request.Email);
-        if (exists)
+        try
         {
-            return Conflict("Email already exists.");
+            var result = await _registrations.RegisterCharityAsync(request);
+            return Ok(new { userId = result.UserId, charityId = result.RelatedId });
         }
-
-        var user = new User
+        catch (InvalidOperationException ex)
         {
-            FName = request.FName,
-            LName = request.LName,
-            Email = request.Email,
-            Password = _hasher.Hash(request.Password),
-            Phone = request.Phone,
-            Address = request.Address,
-            IsVerified = false,
-            UserType = "Charity"
-        };
-
-        _db.Users.Add(user);
-        await _db.SaveChangesAsync();
-
-        var charity = new Charity
+            return Conflict(ex.Message);
+        }
+        catch (Exception ex)
         {
-            CharityId = user.UserId,
-            Capacity = request.Capacity,
-            LicenseNumber = request.LicenseNumber,
-            CoverageArea = request.CoverageArea,
-            Needs = request.Needs,
-            LocationId = request.LocationId
-        };
-
-        _db.Charities.Add(charity);
-        await _db.SaveChangesAsync();
-
-        return Ok(new { user.UserId, charity.CharityId });
+            return StatusCode(500, ex.Message);
+        }
     }
 
     [HttpPost("beneficiary")]
     public async Task<IActionResult> RegisterBeneficiary(RegisterBeneficiaryRequest request)
     {
-        var exists = await _db.Users.AnyAsync(u => u.Email == request.Email);
-        if (exists)
+        try
         {
-            return Conflict("Email already exists.");
+            var result = await _registrations.RegisterBeneficiaryAsync(request);
+            return Ok(new { userId = result.UserId, beneficiaryId = result.RelatedId });
         }
-
-        var user = new User
+        catch (InvalidOperationException ex)
         {
-            FName = request.FName,
-            LName = request.LName,
-            Email = request.Email,
-            Password = _hasher.Hash(request.Password),
-            Phone = request.Phone,
-            Address = request.Address,
-            IsVerified = true,
-            UserType = "Beneficiary"
-        };
-
-        _db.Users.Add(user);
-        await _db.SaveChangesAsync();
-
-        var beneficiary = new Beneficiary
+            return Conflict(ex.Message);
+        }
+        catch (Exception ex)
         {
-            BeneficiaryId = user.UserId,
-            LocationId = request.LocationId
-        };
-
-        _db.Beneficiaries.Add(beneficiary);
-        await _db.SaveChangesAsync();
-
-        return Ok(new { user.UserId, beneficiary.BeneficiaryId });
+            return StatusCode(500, ex.Message);
+        }
     }
 
     [HttpPost("admin")]
     public async Task<IActionResult> RegisterAdmin(RegisterAdminRequest request)
     {
-        var exists = await _db.Users.AnyAsync(u => u.Email == request.Email);
-        if (exists)
-        {
-            return Conflict("Email already exists.");
-        }
-
-        await using var tx = await _db.Database.BeginTransactionAsync();
         try
         {
-            var user = new User
-            {
-                FName = request.FName,
-                LName = request.LName,
-                Email = request.Email,
-                Password = _hasher.Hash(request.Password),
-                Phone = request.Phone,
-                Address = request.Address,
-                IsVerified = true,
-                UserType = "Admin"
-            };
-
-            _db.Users.Add(user);
-            await _db.SaveChangesAsync();
-
-            var admin = new Admin
-            {
-                AdminId = user.UserId
-            };
-
-            _db.Admins.Add(admin);
-            await _db.SaveChangesAsync();
-
-            await tx.CommitAsync();
-
-            return Ok(new { user.UserId, admin.AdminId });
+            var result = await _registrations.RegisterAdminAsync(request);
+            return Ok(new { userId = result.UserId, adminId = result.RelatedId });
         }
-        catch (DbUpdateException ex)
+        catch (InvalidOperationException ex)
         {
-            await tx.RollbackAsync();
-            var message = ex.InnerException?.Message ?? ex.Message;
-            return StatusCode(500, message);
+            return Conflict(ex.Message);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, ex.Message);
         }
     }
 }
