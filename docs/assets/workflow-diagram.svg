@@ -1,0 +1,208 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="2200" height="1500" viewBox="0 0 2200 1500">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f5f5f5"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 Z" fill="#111111"/>
+    </marker>
+    <style>
+      .title { font: 700 44px Arial, sans-serif; fill: #111; }
+      .subtitle { font: 400 22px Arial, sans-serif; fill: #333; }
+      .section { font: 700 26px Arial, sans-serif; fill: #111; }
+      .label { font: 700 22px Arial, sans-serif; fill: #111; }
+      .small { font: 400 18px Arial, sans-serif; fill: #222; }
+      .mini { font: 400 16px Arial, sans-serif; fill: #444; }
+      .box { fill: #ffffff; stroke: #111111; stroke-width: 2.5; rx: 18; ry: 18; }
+      .boxSoft { fill: #fafafa; stroke: #111111; stroke-width: 2; rx: 16; ry: 16; }
+      .pill { fill: #111111; }
+      .pillText { font: 700 18px Arial, sans-serif; fill: #fff; }
+      .line { stroke: #111111; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+      .dash { stroke-dasharray: 8 8; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="2200" height="1500" fill="url(#bg)"/>
+
+  <text x="1100" y="70" text-anchor="middle" class="title">يد العون - دورة عمل النظام الكاملة</text>
+  <text x="1100" y="110" text-anchor="middle" class="subtitle">من لحظة دخول المستخدم إلى الموقع حتى حفظ البيانات والرد من السيرفر</text>
+
+  <!-- Top main cycle -->
+  <text x="1100" y="165" text-anchor="middle" class="section">الدورة العامة للطلب داخل النظام</text>
+
+  <rect x="70" y="210" width="170" height="90" class="box"/>
+  <text x="155" y="247" text-anchor="middle" class="label">المستخدم</text>
+  <text x="155" y="275" text-anchor="middle" class="small">Donor / Charity</text>
+
+  <rect x="275" y="210" width="210" height="90" class="box"/>
+  <text x="380" y="247" text-anchor="middle" class="label">الواجهة الأمامية</text>
+  <text x="380" y="275" text-anchor="middle" class="small">Frontend</text>
+
+  <rect x="530" y="210" width="220" height="90" class="box"/>
+  <text x="640" y="247" text-anchor="middle" class="label">طبقة الـ API</text>
+  <text x="640" y="275" text-anchor="middle" class="small">ASP.NET Core Web API</text>
+
+  <rect x="785" y="210" width="185" height="90" class="box"/>
+  <text x="878" y="247" text-anchor="middle" class="label">Controllers</text>
+  <text x="878" y="275" text-anchor="middle" class="small">استقبال الطلب</text>
+
+  <rect x="1005" y="210" width="175" height="90" class="box"/>
+  <text x="1092" y="247" text-anchor="middle" class="label">Services</text>
+  <text x="1092" y="275" text-anchor="middle" class="small">منطق الشغل</text>
+
+  <rect x="1215" y="210" width="200" height="90" class="box"/>
+  <text x="1315" y="247" text-anchor="middle" class="label">Repositories</text>
+  <text x="1315" y="275" text-anchor="middle" class="small">الوصول للداتا</text>
+
+  <rect x="1450" y="210" width="200" height="90" class="box"/>
+  <text x="1550" y="247" text-anchor="middle" class="label">DbContext</text>
+  <text x="1550" y="275" text-anchor="middle" class="small">EF Core Mapping</text>
+
+  <rect x="1685" y="210" width="180" height="90" class="box"/>
+  <text x="1775" y="247" text-anchor="middle" class="label">SQL Server</text>
+  <text x="1775" y="275" text-anchor="middle" class="small">قاعدة البيانات</text>
+
+  <rect x="1900" y="210" width="230" height="90" class="box"/>
+  <text x="2015" y="247" text-anchor="middle" class="label">Response</text>
+  <text x="2015" y="275" text-anchor="middle" class="small">يرجع للواجهة</text>
+
+  <line x1="240" y1="255" x2="275" y2="255" class="line"/>
+  <line x1="485" y1="255" x2="530" y2="255" class="line"/>
+  <line x1="750" y1="255" x2="785" y2="255" class="line"/>
+  <line x1="970" y1="255" x2="1005" y2="255" class="line"/>
+  <line x1="1180" y1="255" x2="1215" y2="255" class="line"/>
+  <line x1="1415" y1="255" x2="1450" y2="255" class="line"/>
+  <line x1="1650" y1="255" x2="1685" y2="255" class="line"/>
+  <line x1="1865" y1="255" x2="1900" y2="255" class="line"/>
+  <path d="M2015 300 C2015 360, 380 360, 380 300" class="line"/>
+
+  <!-- shared infra -->
+  <rect x="70" y="345" width="2060" height="120" class="boxSoft"/>
+  <text x="1100" y="385" text-anchor="middle" class="section">الأساسيات المشتركة داخل المشروع</text>
+  <rect x="150" y="405" width="230" height="42" rx="21" ry="21" class="pill"/>
+  <text x="265" y="432" text-anchor="middle" class="pillText">JWT Authentication</text>
+  <rect x="410" y="405" width="180" height="42" rx="21" ry="21" class="pill"/>
+  <text x="500" y="432" text-anchor="middle" class="pillText">BCrypt</text>
+  <rect x="620" y="405" width="210" height="42" rx="21" ry="21" class="pill"/>
+  <text x="725" y="432" text-anchor="middle" class="pillText">Dependency Injection</text>
+  <rect x="860" y="405" width="180" height="42" rx="21" ry="21" class="pill"/>
+  <text x="950" y="432" text-anchor="middle" class="pillText">Swagger UI</text>
+  <rect x="1070" y="405" width="200" height="42" rx="21" ry="21" class="pill"/>
+  <text x="1170" y="432" text-anchor="middle" class="pillText">Transactions</text>
+  <rect x="1300" y="405" width="230" height="42" rx="21" ry="21" class="pill"/>
+  <text x="1415" y="432" text-anchor="middle" class="pillText">DTO Separation</text>
+  <rect x="1560" y="405" width="250" height="42" rx="21" ry="21" class="pill"/>
+  <text x="1685" y="432" text-anchor="middle" class="pillText">Repository Pattern</text>
+  <rect x="1840" y="405" width="220" height="42" rx="21" ry="21" class="pill"/>
+  <text x="1950" y="432" text-anchor="middle" class="pillText">Service Layer</text>
+
+  <!-- three flows -->
+  <text x="220" y="530" text-anchor="middle" class="section">1) التسجيل</text>
+  <text x="1100" y="530" text-anchor="middle" class="section">2) تسجيل الدخول</text>
+  <text x="1980" y="530" text-anchor="middle" class="section">3) إضافة التبرع</text>
+
+  <!-- Registration flow left -->
+  <rect x="90" y="570" width="260" height="72" class="box"/>
+  <text x="220" y="603" text-anchor="middle" class="label">اختيار نوع المستخدم</text>
+  <text x="220" y="628" text-anchor="middle" class="mini">Donor / Charity / Beneficiary / Admin</text>
+
+  <rect x="90" y="675" width="260" height="72" class="box"/>
+  <text x="220" y="708" text-anchor="middle" class="label">إرسال بيانات التسجيل</text>
+  <text x="220" y="733" text-anchor="middle" class="mini">الاسم - الإيميل - الباسورد - البيانات الإضافية</text>
+
+  <rect x="90" y="780" width="260" height="72" class="box"/>
+  <text x="220" y="813" text-anchor="middle" class="label">التحقق من الإيميل</text>
+  <text x="220" y="838" text-anchor="middle" class="mini">لو موجود يرجع Conflict</text>
+
+  <rect x="90" y="885" width="260" height="72" class="box"/>
+  <text x="220" y="918" text-anchor="middle" class="label">تشفير الباسورد</text>
+  <text x="220" y="943" text-anchor="middle" class="mini">BCrypt قبل الحفظ</text>
+
+  <rect x="90" y="990" width="260" height="72" class="box"/>
+  <text x="220" y="1023" text-anchor="middle" class="label">حفظ User</text>
+  <text x="220" y="1048" text-anchor="middle" class="mini">في جدول User</text>
+
+  <rect x="90" y="1095" width="260" height="72" class="box"/>
+  <text x="220" y="1128" text-anchor="middle" class="label">حفظ Role Record</text>
+  <text x="220" y="1153" text-anchor="middle" class="mini">Donor / Charity / Beneficiary / Admin</text>
+
+  <rect x="90" y="1200" width="260" height="72" class="box"/>
+  <text x="220" y="1233" text-anchor="middle" class="label">Transaction Commit</text>
+  <text x="220" y="1258" text-anchor="middle" class="mini">لو كل شيء نجح</text>
+
+  <line x1="220" y1="642" x2="220" y2="675" class="line"/>
+  <line x1="220" y1="747" x2="220" y2="780" class="line"/>
+  <line x1="220" y1="852" x2="220" y2="885" class="line"/>
+  <line x1="220" y1="957" x2="220" y2="990" class="line"/>
+  <line x1="220" y1="1062" x2="220" y2="1095" class="line"/>
+  <line x1="220" y1="1167" x2="220" y2="1200" class="line"/>
+
+  <!-- Login flow center -->
+  <rect x="970" y="570" width="260" height="72" class="box"/>
+  <text x="1100" y="603" text-anchor="middle" class="label">إدخال Email + Password</text>
+  <text x="1100" y="628" text-anchor="middle" class="mini">من صفحة Login</text>
+
+  <rect x="970" y="675" width="260" height="72" class="box"/>
+  <text x="1100" y="708" text-anchor="middle" class="label">جلب المستخدم من الداتابيز</text>
+  <text x="1100" y="733" text-anchor="middle" class="mini">بواسطة Repository</text>
+
+  <rect x="970" y="780" width="260" height="72" class="box"/>
+  <text x="1100" y="813" text-anchor="middle" class="label">التحقق من كلمة السر</text>
+  <text x="1100" y="838" text-anchor="middle" class="mini">BCrypt Verify</text>
+
+  <rect x="970" y="885" width="260" height="72" class="box"/>
+  <text x="1100" y="918" text-anchor="middle" class="label">توليد JWT Token</text>
+  <text x="1100" y="943" text-anchor="middle" class="mini">UserId + Email + Role</text>
+
+  <rect x="970" y="990" width="260" height="72" class="box"/>
+  <text x="1100" y="1023" text-anchor="middle" class="label">إرجاع Response</text>
+  <text x="1100" y="1048" text-anchor="middle" class="mini">Token + UserType</text>
+
+  <rect x="970" y="1095" width="260" height="72" class="box"/>
+  <text x="1100" y="1128" text-anchor="middle" class="label">يحفظ في الفرونت</text>
+  <text x="1100" y="1153" text-anchor="middle" class="mini">Authorization: Bearer</text>
+
+  <line x1="1100" y1="642" x2="1100" y2="675" class="line"/>
+  <line x1="1100" y1="747" x2="1100" y2="780" class="line"/>
+  <line x1="1100" y1="852" x2="1100" y2="885" class="line"/>
+  <line x1="1100" y1="957" x2="1100" y2="990" class="line"/>
+  <line x1="1100" y1="1062" x2="1100" y2="1095" class="line"/>
+
+  <!-- Donation flow right -->
+  <rect x="1850" y="570" width="260" height="72" class="box"/>
+  <text x="1980" y="603" text-anchor="middle" class="label">إرسال طلب التبرع</text>
+  <text x="1980" y="628" text-anchor="middle" class="mini">بعد تسجيل الدخول</text>
+
+  <rect x="1850" y="675" width="260" height="72" class="box"/>
+  <text x="1980" y="708" text-anchor="middle" class="label">التحقق من البيانات</text>
+  <text x="1980" y="733" text-anchor="middle" class="mini">لازم يوجد نوع واحد على الأقل</text>
+
+  <rect x="1850" y="780" width="260" height="72" class="box"/>
+  <text x="1980" y="813" text-anchor="middle" class="label">إنشاء Donation</text>
+  <text x="1980" y="838" text-anchor="middle" class="mini">DonationID</text>
+
+  <rect x="1850" y="885" width="260" height="72" class="box"/>
+  <text x="1980" y="918" text-anchor="middle" class="label">إنشاء التفاصيل الفرعية</text>
+  <text x="1980" y="943" text-anchor="middle" class="mini">Food / Clothes / Medicine / MedicalSupplies</text>
+
+  <rect x="1850" y="990" width="260" height="72" class="box"/>
+  <text x="1980" y="1023" text-anchor="middle" class="label">حفظ داخل Transaction</text>
+  <text x="1980" y="1048" text-anchor="middle" class="mini">كل الخطوات معًا</text>
+
+  <rect x="1850" y="1095" width="260" height="72" class="box"/>
+  <text x="1980" y="1128" text-anchor="middle" class="label">إرجاع Created</text>
+  <text x="1980" y="1153" text-anchor="middle" class="mini">Response للفرونت</text>
+
+  <line x1="1980" y1="642" x2="1980" y2="675" class="line"/>
+  <line x1="1980" y1="747" x2="1980" y2="780" class="line"/>
+  <line x1="1980" y1="852" x2="1980" y2="885" class="line"/>
+  <line x1="1980" y1="957" x2="1980" y2="990" class="line"/>
+  <line x1="1980" y1="1062" x2="1980" y2="1095" class="line"/>
+
+  <!-- bottom explanation box -->
+  <rect x="70" y="1330" width="2060" height="120" class="boxSoft"/>
+  <text x="1100" y="1370" text-anchor="middle" class="section">الفكرة اللي تقوليها في المناقشة</text>
+  <text x="1100" y="1410" text-anchor="middle" class="small">أنا قسمت النظام لطبقات واضحة: Controller يستقبل الطلب، Service ينفذ المنطق، Repository يتعامل مع البيانات، وDbContext يربط الكود بقاعدة SQL Server.</text>
+  <text x="1100" y="1440" text-anchor="middle" class="small">واستخدمت JWT للأمان، BCrypt لتشفير كلمة السر، وTransaction عشان أحمي البيانات من أي خطأ أثناء الحفظ.</text>
+</svg>
