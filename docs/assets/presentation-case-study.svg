@@ -1,0 +1,181 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="4200" height="2600" viewBox="0 0 4200 2600">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f4f4f4"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="16" markerHeight="16" refX="13" refY="8" orient="auto">
+      <path d="M0,0 L16,8 L0,16 Z" fill="#111111"/>
+    </marker>
+    <style>
+      .title { font: 700 58px Arial, sans-serif; fill: #111; }
+      .subtitle { font: 400 26px Arial, sans-serif; fill: #333; }
+      .section { font: 700 34px Arial, sans-serif; fill: #111; }
+      .head { font: 700 26px Arial, sans-serif; fill: #111; }
+      .label { font: 700 22px Arial, sans-serif; fill: #111; }
+      .small { font: 400 18px Arial, sans-serif; fill: #222; }
+      .mini { font: 400 16px Arial, sans-serif; fill: #444; }
+      .panel { fill: #ffffff; stroke: #111111; stroke-width: 2.4; rx: 24; ry: 24; }
+      .soft { fill: #fafafa; stroke: #111111; stroke-width: 2; rx: 22; ry: 22; }
+      .pill { fill: #111111; rx: 20; ry: 20; }
+      .pillText { font: 700 18px Arial, sans-serif; fill: #fff; }
+      .line { stroke: #111111; stroke-width: 3.4; fill: none; marker-end: url(#arrow); }
+      .dash { stroke-dasharray: 10 10; }
+      .note { fill: #ececec; stroke: #111; stroke-width: 2; rx: 18; ry: 18; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="4200" height="2600" fill="url(#bg)"/>
+
+  <text x="2100" y="82" text-anchor="middle" class="title">يد العون - Case Study Workflow</text>
+  <text x="2100" y="124" text-anchor="middle" class="subtitle">رسم تقديمي واحد شامل يوضح رحلة البيانات من أول طلب حتى حفظها وعرضها في الواجهة</text>
+
+  <!-- main story panel -->
+  <rect x="90" y="170" width="4020" height="760" class="panel"/>
+  <text x="2100" y="226" text-anchor="middle" class="section">السيناريو الرئيسي للنظام</text>
+
+  <rect x="130" y="300" width="220" height="100" class="soft"/>
+  <text x="240" y="340" text-anchor="middle" class="head">المستخدم</text>
+  <text x="240" y="372" text-anchor="middle" class="mini">متبرع / جمعية</text>
+
+  <rect x="390" y="300" width="260" height="100" class="soft"/>
+  <text x="520" y="340" text-anchor="middle" class="head">الواجهة الأمامية</text>
+  <text x="520" y="372" text-anchor="middle" class="mini">Form + Buttons + Swagger</text>
+
+  <rect x="700" y="300" width="280" height="100" class="soft"/>
+  <text x="840" y="340" text-anchor="middle" class="head">ASP.NET Core API</text>
+  <text x="840" y="372" text-anchor="middle" class="mini">استقبال الطلبات</text>
+
+  <rect x="1030" y="300" width="230" height="100" class="soft"/>
+  <text x="1145" y="340" text-anchor="middle" class="head">Controller</text>
+  <text x="1145" y="372" text-anchor="middle" class="mini">يمسك الطلب فقط</text>
+
+  <rect x="1300" y="300" width="230" height="100" class="soft"/>
+  <text x="1415" y="340" text-anchor="middle" class="head">Service</text>
+  <text x="1415" y="372" text-anchor="middle" class="mini">منطق الشغل</text>
+
+  <rect x="1570" y="300" width="250" height="100" class="soft"/>
+  <text x="1695" y="340" text-anchor="middle" class="head">Repository</text>
+  <text x="1695" y="372" text-anchor="middle" class="mini">استعلامات البيانات</text>
+
+  <rect x="1860" y="300" width="240" height="100" class="soft"/>
+  <text x="1980" y="340" text-anchor="middle" class="head">DbContext</text>
+  <text x="1980" y="372" text-anchor="middle" class="mini">EF Core mapping</text>
+
+  <rect x="2140" y="300" width="220" height="100" class="soft"/>
+  <text x="2250" y="340" text-anchor="middle" class="head">SQL Server</text>
+  <text x="2250" y="372" text-anchor="middle" class="mini">الجداول والبيانات</text>
+
+  <rect x="2400" y="300" width="260" height="100" class="soft"/>
+  <text x="2530" y="340" text-anchor="middle" class="head">Response</text>
+  <text x="2530" y="372" text-anchor="middle" class="mini">يرجع للفرونت</text>
+
+  <line x1="350" y1="350" x2="390" y2="350" class="line"/>
+  <line x1="650" y1="350" x2="700" y2="350" class="line"/>
+  <line x1="980" y1="350" x2="1030" y2="350" class="line"/>
+  <line x1="1260" y1="350" x2="1300" y2="350" class="line"/>
+  <line x1="1530" y1="350" x2="1570" y2="350" class="line"/>
+  <line x1="1820" y1="350" x2="1860" y2="350" class="line"/>
+  <line x1="2100" y1="350" x2="2140" y2="350" class="line"/>
+  <line x1="2360" y1="350" x2="2400" y2="350" class="line"/>
+  <path d="M2530 400 C2530 500, 520 500, 520 400" class="line"/>
+
+  <rect x="130" y="465" width="3900" height="205" class="note"/>
+  <text x="2100" y="515" text-anchor="middle" class="section">الخطوات العامة داخل أي طلب</text>
+  <text x="2100" y="565" text-anchor="middle" class="small">1) الطلب يخرج من الواجهة أو Swagger. 2) الـ Controller يستقبله. 3) الـ Service يطبق القواعد والمنطق. 4) الـ Repository يقرأ أو يكتب البيانات. 5) الـ DbContext يترجمها إلى SQL. 6) SQL Server يحفظ أو يرجع البيانات. 7) النتيجة ترجع للواجهة.</text>
+  <text x="2100" y="605" text-anchor="middle" class="small">هذا هو المسار الحقيقي الذي يتكرر مع التسجيل، تسجيل الدخول، التبرعات، الرسائل، الإشعارات، والمطابقة.</text>
+  <rect x="210" y="625" width="260" height="36" rx="18" ry="18" class="pill"/>
+  <text x="340" y="649" text-anchor="middle" class="pillText">JWT</text>
+  <rect x="500" y="625" width="260" height="36" rx="18" ry="18" class="pill"/>
+  <text x="630" y="649" text-anchor="middle" class="pillText">BCrypt</text>
+  <rect x="790" y="625" width="340" height="36" rx="18" ry="18" class="pill"/>
+  <text x="960" y="649" text-anchor="middle" class="pillText">Dependency Injection</text>
+  <rect x="1160" y="625" width="280" height="36" rx="18" ry="18" class="pill"/>
+  <text x="1300" y="649" text-anchor="middle" class="pillText">Transactions</text>
+  <rect x="1470" y="625" width="320" height="36" rx="18" ry="18" class="pill"/>
+  <text x="1630" y="649" text-anchor="middle" class="pillText">Repository Pattern</text>
+  <rect x="1810" y="625" width="270" height="36" rx="18" ry="18" class="pill"/>
+  <text x="1945" y="649" text-anchor="middle" class="pillText">Service Layer</text>
+  <rect x="2100" y="625" width="250" height="36" rx="18" ry="18" class="pill"/>
+  <text x="2225" y="649" text-anchor="middle" class="pillText">Swagger UI</text>
+  <rect x="2370" y="625" width="310" height="36" rx="18" ry="18" class="pill"/>
+  <text x="2525" y="649" text-anchor="middle" class="pillText">DTO Separation</text>
+
+  <!-- Detailed case study -->
+  <rect x="90" y="970" width="4020" height="760" class="panel"/>
+  <text x="2100" y="1026" text-anchor="middle" class="section">Case Study: متبرع جديد يسجل ثم يضيف تبرعًا ثم يصل للمطابقة</text>
+
+  <rect x="130" y="1110" width="300" height="120" class="soft"/>
+  <text x="280" y="1150" text-anchor="middle" class="head">1. التسجيل</text>
+  <text x="280" y="1180" text-anchor="middle" class="mini">بيانات المستخدم + نوعه</text>
+  <text x="280" y="1204" text-anchor="middle" class="mini">User + Donor/Charity Record</text>
+
+  <rect x="490" y="1110" width="300" height="120" class="soft"/>
+  <text x="640" y="1150" text-anchor="middle" class="head">2. الدخول</text>
+  <text x="640" y="1180" text-anchor="middle" class="mini">Email + Password</text>
+  <text x="640" y="1204" text-anchor="middle" class="mini">JWT Token</text>
+
+  <rect x="850" y="1110" width="320" height="120" class="soft"/>
+  <text x="1010" y="1150" text-anchor="middle" class="head">3. إنشاء Donation</text>
+  <text x="1010" y="1180" text-anchor="middle" class="mini">Donation + Food/Clothes/Medicine</text>
+  <text x="1010" y="1204" text-anchor="middle" class="mini">داخل Transaction</text>
+
+  <rect x="1230" y="1110" width="300" height="120" class="soft"/>
+  <text x="1380" y="1150" text-anchor="middle" class="head">4. الحالة</text>
+  <text x="1380" y="1180" text-anchor="middle" class="mini">Pending ثم Available</text>
+  <text x="1380" y="1204" text-anchor="middle" class="mini">أو الحالة المناسبة</text>
+
+  <rect x="1590" y="1110" width="310" height="120" class="soft"/>
+  <text x="1745" y="1150" text-anchor="middle" class="head">5. المطابقة</text>
+  <text x="1745" y="1180" text-anchor="middle" class="mini">Match مع جمعية أو مستفيد</text>
+  <text x="1745" y="1204" text-anchor="middle" class="mini">تسجيل العلاقة</text>
+
+  <rect x="1960" y="1110" width="310" height="120" class="soft"/>
+  <text x="2115" y="1150" text-anchor="middle" class="head">6. الإشعار</text>
+  <text x="2115" y="1180" text-anchor="middle" class="mini">Notification للطرف المناسب</text>
+  <text x="2115" y="1204" text-anchor="middle" class="mini">تبليغ بالحركة الجديدة</text>
+
+  <rect x="2330" y="1110" width="320" height="120" class="soft"/>
+  <text x="2490" y="1150" text-anchor="middle" class="head">7. العرض</text>
+  <text x="2490" y="1180" text-anchor="middle" class="mini">الفرونت يقرأ الـ response</text>
+  <text x="2490" y="1204" text-anchor="middle" class="mini">ويعرض النتيجة للمستخدم</text>
+
+  <rect x="2710" y="1110" width="360" height="120" class="soft"/>
+  <text x="2890" y="1150" text-anchor="middle" class="head">8. حفظ آمن</text>
+  <text x="2890" y="1180" text-anchor="middle" class="mini">كل خطوة فيها validation</text>
+  <text x="2890" y="1204" text-anchor="middle" class="mini">وTransaction لو فيه تحديثات متعددة</text>
+
+  <line x1="430" y1="1170" x2="490" y2="1170" class="line"/>
+  <line x1="790" y1="1170" x2="850" y2="1170" class="line"/>
+  <line x1="1170" y1="1170" x2="1230" y2="1170" class="line"/>
+  <line x1="1530" y1="1170" x2="1590" y2="1170" class="line"/>
+  <line x1="1900" y1="1170" x2="1960" y2="1170" class="line"/>
+  <line x1="2270" y1="1170" x2="2330" y2="1170" class="line"/>
+  <line x1="2650" y1="1170" x2="2710" y2="1170" class="line"/>
+
+  <rect x="130" y="1280" width="3970" height="370" class="note"/>
+  <text x="2100" y="1330" text-anchor="middle" class="section">كيف يُشرح هذا السيناريو شفهيًا في المناقشة</text>
+  <text x="2100" y="1382" text-anchor="middle" class="small">السيناريو يبدأ عندما يدخل المستخدم إلى الواجهة ويختار نوعه ثم يرسل بياناته إلى التسجيل. النظام يمر أولًا على Controller، ثم Service، ثم Repository، ثم DbContext، ثم SQL Server، وبعدها يعود الرد.</text>
+  <text x="2100" y="1430" text-anchor="middle" class="small">بعد التسجيل، يتم تسجيل الدخول وإصدار JWT Token. هذا التوكن يصبح إثبات الهوية الذي يستخدمه النظام في أي endpoint محمي.</text>
+  <text x="2100" y="1478" text-anchor="middle" class="small">عندما يضيف المتبرع donation، يتم إنشاء السجل الرئيسي ثم تفاصيل النوع داخل Transaction واحدة. إذا نجحت الخطوات كلها، يتم حفظ البيانات وإرجاع response، وإذا فشلت أي خطوة يتم rollback حتى لا تبقى بيانات ناقصة.</text>
+  <text x="2100" y="1526" text-anchor="middle" class="small">بعدها يمكن للنظام إنشاء match مناسب، وإصدار notification، ثم عرض النتيجة في الواجهة. بهذا الشكل تُفهم دورة النظام كاملة بدون الحاجة لأسئلة إضافية عن كل خطوة.</text>
+
+  <rect x="170" y="1550" width="1060" height="70" class="panel"/>
+  <text x="700" y="1594" text-anchor="middle" class="head">الملف المفيد في العرض: docs/workflow.md</text>
+  <rect x="1380" y="1550" width="1250" height="70" class="panel"/>
+  <text x="2005" y="1594" text-anchor="middle" class="head">الرسمة هذه مناسبة كـ Slide رئيسي في presentation أمام البشمهندسة</text>
+  <rect x="2720" y="1550" width="980" height="70" class="panel"/>
+  <text x="3210" y="1594" text-anchor="middle" class="head">الإطار الأبيض والأسود مقصود لعرض أكاديمي نظيف</text>
+
+  <!-- bottom summary -->
+  <rect x="90" y="1780" width="4020" height="620" class="panel"/>
+  <text x="2100" y="1835" text-anchor="middle" class="section">ملخص نهائي جاهز للعرض</text>
+  <text x="2100" y="1895" text-anchor="middle" class="head">هذا النظام ليس مجرد APIs منفصلة، بل مسار متكامل يبدأ من الطلب وينتهي بالبيانات والرد.</text>
+  <text x="2100" y="1950" text-anchor="middle" class="head">كل طبقة لها دور واضح: Controller للاستقبال، Service للمنطق، Repository للبيانات، DbContext للربط، وSQL Server للتخزين.</text>
+  <text x="2100" y="2005" text-anchor="middle" class="head">الأمان تم عبر JWT وBCrypt، والاتساق عبر Transactions، وسهولة الفهم عبر Swagger وDTOs.</text>
+  <text x="2100" y="2070" text-anchor="middle" class="small">المناقشة يمكن أن تبدأ من أي نقطة في هذا الرسم ثم تتبع السهم حتى النهاية؛ لذلك فهو مناسب كمرجع بصري كامل للمشروع.</text>
+  <text x="2100" y="2130" text-anchor="middle" class="small">هذا التخطيط يسمح بعرض المشروع كـ case study حقيقي: مستخدم يسجل، يدخل، يضيف تبرع، يحدث match، ويستقبل notification، والواجهة تعرض النتيجة.</text>
+  <text x="2100" y="2190" text-anchor="middle" class="small">كل جزء في الرسم يربط مباشرة بملفات المشروع البرمجية، لذلك يمكن شرح التطبيق من أول سطر في `Program.cs` حتى آخر response يخرج من الـ API.</text>
+
+  <text x="2100" y="2295" text-anchor="middle" class="subtitle">Yad ElAwn Backend Workflow - Presentation Diagram</text>
+</svg>
