@@ -1,0 +1,88 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="2400" viewBox="0 0 2400 2400">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f3f3f3"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="14" markerHeight="14" refX="11" refY="7" orient="auto">
+      <path d="M0,0 L14,7 L0,14 Z" fill="#111"/>
+    </marker>
+    <style>
+      .title { font: 700 54px Arial, sans-serif; fill: #111; }
+      .sub { font: 400 24px Arial, sans-serif; fill: #333; }
+      .box { fill: #fff; stroke: #111; stroke-width: 2.4; rx: 18; ry: 18; }
+      .label { font: 700 22px Arial, sans-serif; fill: #111; }
+      .small { font: 400 17px Arial, sans-serif; fill: #222; }
+      .line { stroke: #111; stroke-width: 4; fill: none; marker-end: url(#arrow); }
+      .center { fill: #111; }
+      .centerText { font: 700 28px Arial, sans-serif; fill: #fff; }
+      .note { fill: #fafafa; stroke: #111; stroke-width: 2; rx: 18; ry: 18; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="2400" height="2400" fill="url(#bg)"/>
+  <text x="1200" y="80" text-anchor="middle" class="title">Yad ElAwn Backend Cycle Diagram</text>
+  <text x="1200" y="120" text-anchor="middle" class="sub">A full cycle of a request from the UI to the database and back</text>
+
+  <circle cx="1200" cy="1200" r="470" fill="#fff" stroke="#111" stroke-width="4"/>
+  <circle cx="1200" cy="1200" r="210" class="center"/>
+  <text x="1200" y="1165" text-anchor="middle" class="centerText">Core</text>
+  <text x="1200" y="1205" text-anchor="middle" class="centerText">Backend</text>
+  <text x="1200" y="1245" text-anchor="middle" class="centerText">Cycle</text>
+
+  <!-- cycle nodes -->
+  <rect x="1010" y="300" width="380" height="120" class="box"/>
+  <text x="1200" y="348" text-anchor="middle" class="label">Frontend Request</text>
+  <text x="1200" y="382" text-anchor="middle" class="small">User action or Swagger test</text>
+
+  <rect x="1660" y="620" width="390" height="120" class="box"/>
+  <text x="1855" y="668" text-anchor="middle" class="label">Controller</text>
+  <text x="1855" y="702" text-anchor="middle" class="small">Receives HTTP request</text>
+
+  <rect x="1700" y="1150" width="390" height="120" class="box"/>
+  <text x="1895" y="1198" text-anchor="middle" class="label">Service Layer</text>
+  <text x="1895" y="1232" text-anchor="middle" class="small">Business rules and validation</text>
+
+  <rect x="1660" y="1680" width="390" height="120" class="box"/>
+  <text x="1855" y="1728" text-anchor="middle" class="label">Repository</text>
+  <text x="1855" y="1762" text-anchor="middle" class="small">Data access methods</text>
+
+  <rect x="1010" y="1990" width="380" height="120" class="box"/>
+  <text x="1200" y="2038" text-anchor="middle" class="label">DbContext</text>
+  <text x="1200" y="2072" text-anchor="middle" class="small">EF Core mapping to tables</text>
+
+  <rect x="330" y="1680" width="390" height="120" class="box"/>
+  <text x="525" y="1728" text-anchor="middle" class="label">SQL Server</text>
+  <text x="525" y="1762" text-anchor="middle" class="small">Stores and reads data</text>
+
+  <rect x="290" y="1150" width="390" height="120" class="box"/>
+  <text x="485" y="1198" text-anchor="middle" class="label">Response</text>
+  <text x="485" y="1232" text-anchor="middle" class="small">Result returned to UI</text>
+
+  <!-- arrows around the circle -->
+  <path d="M1200 420 C1650 450, 1780 520, 1845 620" class="line"/>
+  <path d="M2000 740 C2050 950, 2030 1040, 1910 1150" class="line"/>
+  <path d="M1890 1270 C1860 1500, 1830 1600, 1730 1680" class="line"/>
+  <path d="M1660 1740 C1450 1920, 1400 1980, 1390 1990" class="line"/>
+  <path d="M1010 2050 C800 1990, 720 1910, 720 1800" class="line"/>
+  <path d="M520 1680 C430 1550, 360 1440, 365 1270" class="line"/>
+  <path d="M365 1150 C365 970, 460 850, 620 740" class="line"/>
+  <path d="M620 620 C740 480, 900 430, 1010 420" class="line"/>
+
+  <rect x="110" y="170" width="500" height="220" class="note"/>
+  <text x="360" y="220" text-anchor="middle" class="label">How to read this diagram</text>
+  <text x="360" y="262" text-anchor="middle" class="small">1. The user sends a request from the frontend.</text>
+  <text x="360" y="296" text-anchor="middle" class="small">2. The controller receives it first.</text>
+  <text x="360" y="330" text-anchor="middle" class="small">3. The service applies the rules.</text>
+  <text x="360" y="364" text-anchor="middle" class="small">4. The repository talks to the database.</text>
+
+  <rect x="1790" y="170" width="500" height="220" class="note"/>
+  <text x="2040" y="220" text-anchor="middle" class="label">What happens in the cycle</text>
+  <text x="2040" y="262" text-anchor="middle" class="small">Request → Validation → Data access → Storage</text>
+  <text x="2040" y="296" text-anchor="middle" class="small">→ Response → UI update</text>
+  <text x="2040" y="330" text-anchor="middle" class="small">This repeats for login, registration, donations,</text>
+  <text x="2040" y="364" text-anchor="middle" class="small">messages, notifications, and matches.</text>
+
+  <rect x="820" y="2230" width="760" height="90" class="note"/>
+  <text x="1200" y="2285" text-anchor="middle" class="label">Swagger URL: http://localhost:5000/</text>
+</svg>
