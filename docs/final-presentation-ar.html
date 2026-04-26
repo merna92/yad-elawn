@@ -20,78 +20,23 @@
       color: var(--ink);
       line-height: 1.7;
     }
-    .wrap {
-      width: min(1400px, calc(100% - 32px));
-      margin: 0 auto;
-      padding: 24px 0 48px;
-    }
-    .hero {
-      border: 2px solid var(--border);
-      background: linear-gradient(180deg, #fff, #f5f5f5);
-      border-radius: 24px;
-      padding: 28px;
-      margin-bottom: 24px;
-    }
+    .wrap { width: min(1400px, calc(100% - 32px)); margin: 0 auto; padding: 24px 0 48px; }
+    .hero { border: 2px solid var(--border); background: linear-gradient(180deg, #fff, #f5f5f5); border-radius: 24px; padding: 28px; margin-bottom: 24px; }
     h1, h2, h3, h4 { margin: 0 0 12px; }
     h1 { font-size: 42px; }
     h2 { font-size: 28px; margin-top: 24px; }
     h3 { font-size: 22px; margin-top: 18px; }
     p, li { font-size: 18px; color: var(--ink); }
     .muted { color: var(--muted); }
-    .card {
-      border: 2px solid var(--border);
-      border-radius: 24px;
-      background: #fff;
-      padding: 24px;
-      margin-bottom: 24px;
-    }
-    .figure {
-      width: 100%;
-      max-width: 100%;
-      overflow: auto;
-      border: 2px solid var(--border);
-      border-radius: 24px;
-      background: #fff;
-      padding: 12px;
-      height: 1500px;
-    }
+    .card { border: 2px solid var(--border); border-radius: 24px; background: #fff; padding: 24px; margin-bottom: 24px; }
+    .figure { width: 100%; max-width: 100%; overflow: auto; border: 2px solid var(--border); border-radius: 24px; background: #fff; padding: 12px; height: 1500px; }
     .figure svg { width: 2800px; min-width: 2800px; height: auto; display: block; }
-    .nav {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin: 16px 0 0;
-    }
-    .nav a {
-      text-decoration: none;
-      color: #111;
-      border: 2px solid #111;
-      padding: 8px 12px;
-      border-radius: 999px;
-      font-weight: 700;
-      background: #fff;
-    }
-    .codeblock {
-      white-space: pre-wrap;
-      word-break: break-word;
-      font-family: Consolas, 'Courier New', monospace;
-      font-size: 15px;
-      background: #f4f4f4;
-      border: 1px solid #d8d8d8;
-      border-radius: 18px;
-      padding: 18px;
-      margin-top: 14px;
-      direction: ltr;
-      text-align: left;
-    }
-    .section-note {
-      background: var(--panel);
-      border: 1px solid #d0d0d0;
-      padding: 16px 18px;
-      border-radius: 18px;
-      margin-top: 12px;
-    }
+    .nav { display: flex; gap: 10px; flex-wrap: wrap; margin: 16px 0 0; }
+    .nav a { text-decoration: none; color: #111; border: 2px solid #111; padding: 8px 12px; border-radius: 999px; font-weight: 700; background: #fff; }
+    .codeblock { white-space: pre-wrap; word-break: break-word; font-family: Consolas, 'Courier New', monospace; font-size: 15px; background: #f4f4f4; border: 1px solid #d8d8d8; border-radius: 18px; padding: 18px; margin-top: 14px; direction: ltr; text-align: left; }
+    .section-note { background: var(--panel); border: 1px solid #d0d0d0; padding: 16px 18px; border-radius: 18px; margin-top: 12px; }
     .toplink { text-align: left; margin-top: 12px; }
+    .toplink a { color: #111; }
   </style>
 </head>
 <body>
@@ -102,230 +47,50 @@
       <div class="nav">
         <a href="#idea">فكرة المشروع</a>
         <a href="#workflow">رسم الـ Workflow</a>
-        <a href="#swag">Swagger</a>
+        <a href="#swag">السويجر</a>
         <a href="#code">شرح الكود</a>
       </div>
     </div>
-
     <div class="card" id="idea">
       <h2>فكرة المشروع</h2>
       <p>يد العون منصة تبرعات تربط بين المتبرعين والجمعيات والمستفيدين.</p>
       <p>تم بناء الباك إند باستخدام ASP.NET Core Web API وقاعدة بيانات SQL Server.</p>
-      <div class="section-note">
-        <strong>فكرة الداتابيز:</strong> تم تجهيز قاعدة البيانات أولًا، ثم تم ربط الباك إند بنفس الجداول والعلاقات باستخدام Entity Framework Core.
-      </div>
+      <div class="section-note"><strong>فكرة الداتابيز:</strong> تم تجهيز قاعدة البيانات أولًا، ثم تم ربط الباك إند بنفس الجداول والعلاقات باستخدام Entity Framework Core.</div>
     </div>
-
     <div class="card" id="workflow">
       <h2>رسم الـ Workflow</h2>
       <p>هذا هو الرسم النهائي الذي يمكن شرحه أمام البشمهندسة خطوة خطوة.</p>
       <div class="figure">
-        <svg xmlns="http://www.w3.org/2000/svg" width="4200" height="3000" viewBox="0 0 4200 3000">
-          <defs>
-            <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#ffffff"/>
-              <stop offset="100%" stop-color="#f2f2f2"/>
-            </linearGradient>
-            <marker id="arrow" markerWidth="16" markerHeight="16" refX="13" refY="8" orient="auto">
-              <path d="M0,0 L16,8 L0,16 Z" fill="#111111"/>
-            </marker>
-            <style>
-              .title { font: 700 60px Arial, sans-serif; fill: #111; }
-              .subtitle { font: 400 24px Arial, sans-serif; fill: #333; }
-              .section { font: 700 34px Arial, sans-serif; fill: #111; }
-              .head { font: 700 26px Arial, sans-serif; fill: #111; }
-              .label { font: 700 22px Arial, sans-serif; fill: #111; }
-              .small { font: 400 18px Arial, sans-serif; fill: #222; }
-              .tiny { font: 400 15px Arial, sans-serif; fill: #444; }
-              .panel { fill: #ffffff; stroke: #111111; stroke-width: 2.5; rx: 24; ry: 24; }
-              .soft { fill: #fafafa; stroke: #111111; stroke-width: 2; rx: 18; ry: 18; }
-              .pill { fill: #111111; rx: 20; ry: 20; }
-              .pillText { font: 700 18px Arial, sans-serif; fill: #fff; }
-              .line { stroke: #111111; stroke-width: 3.2; fill: none; marker-end: url(#arrow); }
-              .note { fill: #ececec; stroke: #111111; stroke-width: 2; rx: 18; ry: 18; }
-            </style>
-          </defs>
-          <rect x="0" y="0" width="4200" height="3000" fill="url(#bg)"/>
-          <text x="2100" y="82" text-anchor="middle" class="title">Yad ElAwn - Final Presentation Diagram</text>
-          <text x="2100" y="124" text-anchor="middle" class="subtitle">A complete English-only presentation board for the backend, database idea, request cycle, and Swagger demo</text>
-          <rect x="90" y="170" width="4020" height="510" class="panel"/>
-          <text x="2100" y="225" text-anchor="middle" class="section">1) Project Idea and Database Creation</text>
-          <rect x="140" y="290" width="690" height="290" class="soft"/>
-          <text x="485" y="335" text-anchor="middle" class="head">Project Idea</text>
-          <text x="485" y="382" text-anchor="middle" class="small">Yad ElAwn is a donations platform that connects donors, charities, and beneficiaries.</text>
-          <text x="485" y="425" text-anchor="middle" class="small">The goal is to manage registration, login, donations, messages, notifications, and matching.</text>
-          <text x="485" y="468" text-anchor="middle" class="small">The database was prepared first so the backend could match the real tables and relationships.</text>
-          <text x="485" y="511" text-anchor="middle" class="small">Database used: SQL Server Express.</text>
-          <rect x="900" y="290" width="730" height="290" class="soft"/>
-          <text x="1265" y="335" text-anchor="middle" class="head">What Was Written in the Backend</text>
-          <text x="1265" y="382" text-anchor="middle" class="small">ASP.NET Core Web API project with controllers, services, repositories, DTOs, and models.</text>
-          <text x="1265" y="425" text-anchor="middle" class="small">EF Core was used to map the C# classes to the SQL tables.</text>
-          <text x="1265" y="468" text-anchor="middle" class="small">JWT authentication was added for secure login.</text>
-          <text x="1265" y="511" text-anchor="middle" class="small">BCrypt was used for password hashing.</text>
-          <rect x="1700" y="290" width="2350" height="290" class="soft"/>
-          <text x="2875" y="335" text-anchor="middle" class="head">Database Tables and Main Entities</text>
-          <rect x="1745" y="375" width="240" height="40" class="pill"/><text x="1865" y="401" text-anchor="middle" class="pillText">User</text>
-          <rect x="2010" y="375" width="240" height="40" class="pill"/><text x="2130" y="401" text-anchor="middle" class="pillText">Donor</text>
-          <rect x="2275" y="375" width="240" height="40" class="pill"/><text x="2395" y="401" text-anchor="middle" class="pillText">Charity</text>
-          <rect x="2540" y="375" width="240" height="40" class="pill"/><text x="2660" y="401" text-anchor="middle" class="pillText">Beneficiary</text>
-          <rect x="2805" y="375" width="240" height="40" class="pill"/><text x="2925" y="401" text-anchor="middle" class="pillText">Admin</text>
-          <rect x="3070" y="375" width="240" height="40" class="pill"/><text x="3190" y="401" text-anchor="middle" class="pillText">Donation</text>
-          <rect x="3335" y="375" width="240" height="40" class="pill"/><text x="3455" y="401" text-anchor="middle" class="pillText">Food / Clothes / Medicine</text>
-          <rect x="1745" y="435" width="240" height="40" class="pill"/><text x="1865" y="461" text-anchor="middle" class="pillText">MedicalSupplies</text>
-          <rect x="2010" y="435" width="240" height="40" class="pill"/><text x="2130" y="461" text-anchor="middle" class="pillText">Message</text>
-          <rect x="2275" y="435" width="240" height="40" class="pill"/><text x="2395" y="461" text-anchor="middle" class="pillText">Notification</text>
-          <rect x="2540" y="435" width="240" height="40" class="pill"/><text x="2660" y="461" text-anchor="middle" class="pillText">Match</text>
-          <rect x="2805" y="435" width="240" height="40" class="pill"/><text x="2925" y="461" text-anchor="middle" class="pillText">Location</text>
-          <rect x="3070" y="435" width="240" height="40" class="pill"/><text x="3190" y="461" text-anchor="middle" class="pillText">Audit / Status</text>
-          <rect x="3335" y="435" width="240" height="40" class="pill"/><text x="3455" y="461" text-anchor="middle" class="pillText">Evaluation</text>
-          <text x="2875" y="545" text-anchor="middle" class="small">These tables are connected with relationships in ApplicationDbContext so the backend understands how the data is stored and linked.</text>
-          <rect x="90" y="730" width="4020" height="1180" class="panel"/>
-          <text x="2100" y="785" text-anchor="middle" class="section">2) Complete Runtime Cycle</text>
-          <circle cx="2100" cy="1330" r="430" fill="#fff" stroke="#111" stroke-width="4"/>
-          <circle cx="2100" cy="1330" r="190" fill="#111"/>
-          <text x="2100" y="1295" text-anchor="middle" class="label" fill="#fff">Core Backend</text>
-          <text x="2100" y="1335" text-anchor="middle" class="label" fill="#fff">Processing</text>
-          <text x="2100" y="1375" text-anchor="middle" class="label" fill="#fff">Cycle</text>
-          <rect x="1620" y="980" width="430" height="110" class="soft"/>
-          <text x="1835" y="1022" text-anchor="middle" class="head">Frontend / Swagger</text>
-          <text x="1835" y="1055" text-anchor="middle" class="small">A request starts here</text>
-          <rect x="2450" y="1110" width="390" height="110" class="soft"/>
-          <text x="2645" y="1152" text-anchor="middle" class="head">Controller</text>
-          <text x="2645" y="1185" text-anchor="middle" class="small">Receives the HTTP request</text>
-          <rect x="2790" y="1600" width="390" height="110" class="soft"/>
-          <text x="2985" y="1642" text-anchor="middle" class="head">Service</text>
-          <text x="2985" y="1675" text-anchor="middle" class="small">Validates and applies business rules</text>
-          <rect x="2420" y="2000" width="430" height="110" class="soft"/>
-          <text x="2635" y="2042" text-anchor="middle" class="head">Repository</text>
-          <text x="2635" y="2075" text-anchor="middle" class="small">Reads and writes data</text>
-          <rect x="1450" y="2140" width="380" height="110" class="soft"/>
-          <text x="1640" y="2182" text-anchor="middle" class="head">DbContext</text>
-          <text x="1640" y="2215" text-anchor="middle" class="small">Maps C# classes to SQL tables</text>
-          <rect x="740" y="2000" width="390" height="110" class="soft"/>
-          <text x="935" y="2042" text-anchor="middle" class="head">SQL Server</text>
-          <text x="935" y="2075" text-anchor="middle" class="small">Stores and returns data</text>
-          <rect x="470" y="1600" width="380" height="110" class="soft"/>
-          <text x="660" y="1642" text-anchor="middle" class="head">Response</text>
-          <text x="660" y="1675" text-anchor="middle" class="small">Sent back to the frontend</text>
-          <path d="M2050 1070 C2260 1070, 2350 1090, 2450 1120" class="line"/>
-          <path d="M2840 1220 C2870 1370, 2910 1500, 2940 1600" class="line"/>
-          <path d="M2790 1670 C2720 1840, 2660 1940, 2580 2000" class="line"/>
-          <path d="M2420 2060 C2200 2140, 1900 2160, 1830 2140" class="line"/>
-          <path d="M1450 2190 C1320 2210, 1160 2180, 1130 2140" class="line"/>
-          <path d="M740 2060 C640 1940, 590 1820, 540 1710" class="line"/>
-          <path d="M470 1600 C430 1430, 420 1290, 470 1160" class="line"/>
-          <path d="M540 1110 C830 990, 1260 960, 1620 1000" class="line"/>
-          <rect x="140" y="920" width="680" height="350" class="note"/>
-          <text x="480" y="965" text-anchor="middle" class="head">How the cycle works</text>
-          <text x="180" y="1015" class="small">1. The user opens the frontend or Swagger.</text>
-          <text x="180" y="1050" class="small">2. The request goes to the controller.</text>
-          <text x="180" y="1085" class="small">3. The controller sends the request to the service.</text>
-          <text x="180" y="1120" class="small">4. The service decides what rules must be applied.</text>
-          <text x="180" y="1155" class="small">5. The service calls the repository.</text>
-          <text x="180" y="1190" class="small">6. The repository uses DbContext.</text>
-          <text x="180" y="1225" class="small">7. DbContext talks to SQL Server.</text>
-          <text x="180" y="1260" class="small">8. The result comes back as a response.</text>
-          <rect x="3330" y="920" width="680" height="350" class="note"/>
-          <text x="3670" y="965" text-anchor="middle" class="head">Why this cycle is important</text>
-          <text x="3370" y="1015" class="small">The same cycle repeats for all main features:</text>
-          <text x="3370" y="1050" class="small">registration, login, donations, messages, notifications, and matches.</text>
-          <text x="3370" y="1090" class="small">This keeps the backend organized and easy to explain.</text>
-          <text x="3370" y="1130" class="small">Each layer has one responsibility only.</text>
-          <text x="3370" y="1170" class="small">That is why the code is easier to maintain and extend.</text>
-          <text x="3370" y="1210" class="small">Swagger can call the same cycle and show the result immediately.</text>
-          <rect x="90" y="1980" width="4020" height="700" class="panel"/>
-          <text x="2100" y="2035" text-anchor="middle" class="section">3) Main Feature Flows</text>
-          <rect x="160" y="2100" width="760" height="500" class="soft"/>
-          <text x="540" y="2150" text-anchor="middle" class="head">Registration Flow</text>
-          <text x="190" y="2200" class="small">• Choose a role: donor, charity, beneficiary, or admin.</text>
-          <text x="190" y="2240" class="small">• Send the registration request.</text>
-          <text x="190" y="2280" class="small">• Check if the email already exists.</text>
-          <text x="190" y="2320" class="small">• Hash the password with BCrypt.</text>
-          <text x="190" y="2360" class="small">• Save the User record first.</text>
-          <text x="190" y="2400" class="small">• Save the matching role record after that.</text>
-          <text x="190" y="2440" class="small">• Use a transaction so the whole process succeeds or fails together.</text>
-          <text x="190" y="2480" class="small">• Return the created IDs to the frontend.</text>
-          <rect x="1020" y="2100" width="760" height="500" class="soft"/>
-          <text x="1400" y="2150" text-anchor="middle" class="head">Login Flow</text>
-          <text x="1050" y="2200" class="small">• Send email and password to the login endpoint.</text>
-          <text x="1050" y="2240" class="small">• Find the user by email.</text>
-          <text x="1050" y="2280" class="small">• Verify the password using BCrypt.</text>
-          <text x="1050" y="2320" class="small">• Create a JWT token if the credentials are valid.</text>
-          <text x="1050" y="2360" class="small">• Return user data and token in the response.</text>
-          <text x="1050" y="2400" class="small">• Store the token in the frontend.</text>
-          <text x="1050" y="2440" class="small">• Use the token in protected endpoints.</text>
-          <text x="1050" y="2480" class="small">• Send it as: Authorization: Bearer &lt;TOKEN&gt;</text>
-          <rect x="1880" y="2100" width="760" height="500" class="soft"/>
-          <text x="2260" y="2150" text-anchor="middle" class="head">Donation Flow</text>
-          <text x="1910" y="2200" class="small">• The donor creates a donation request.</text>
-          <text x="1910" y="2240" class="small">• The backend validates that at least one donation type exists.</text>
-          <text x="1910" y="2280" class="small">• Create the main Donation record.</text>
-          <text x="1910" y="2320" class="small">• Create the subtype record:</text>
-          <text x="1940" y="2360" class="small">- Food</text>
-          <text x="1940" y="2395" class="small">- Clothes</text>
-          <text x="1940" y="2430" class="small">- Medicine</text>
-          <text x="1940" y="2465" class="small">- MedicalSupplies</text>
-          <text x="1940" y="2500" class="small">• Wrap the operation in a transaction.</text>
-          <rect x="2740" y="2100" width="760" height="500" class="soft"/>
-          <text x="3120" y="2150" text-anchor="middle" class="head">Messages, Notifications, and Matches</text>
-          <text x="2770" y="2200" class="small">• Messages are saved to the database and shown in the inbox.</text>
-          <text x="2770" y="2240" class="small">• Notifications are created when important events happen.</text>
-          <text x="2770" y="2280" class="small">• Matches connect donations with the right charity or beneficiary.</text>
-          <text x="2770" y="2320" class="small">• Each action follows the same controller → service → repository flow.</text>
-          <text x="2770" y="2360" class="small">• The frontend reads the response and updates the screen.</text>
-          <text x="2770" y="2400" class="small">• This makes the whole system consistent and easy to follow.</text>
-          <text x="2770" y="2440" class="small">• The same API cycle is reused for every feature.</text>
-          <rect x="90" y="2720" width="4020" height="190" class="panel"/>
-          <text x="2100" y="2770" text-anchor="middle" class="section">4) Swagger Demo</text>
-          <text x="2100" y="2820" text-anchor="middle" class="small">Open Swagger UI in the browser at: http://localhost:5000/</text>
-          <text x="2100" y="2860" text-anchor="middle" class="small">Swagger JSON: http://localhost:5000/swagger/v1/swagger.json</text>
-          <text x="2100" y="2898" text-anchor="middle" class="small">Open an endpoint, click Try it out, fill the body, then click Execute.</text>
-          <text x="2100" y="2940" text-anchor="middle" class="tiny">Final presentation board for Yad ElAwn backend</text>
-        </svg>
+        $arabicSvg
       </div>
     </div>
-
     <div class="card" id="swag">
-      <h2>Swagger</h2>
+      <h2>السويجر</h2>
       <p><strong>Swagger UI:</strong> <a href="http://localhost:5000/" target="_blank" rel="noreferrer">http://localhost:5000/</a></p>
       <p><strong>Swagger JSON:</strong> <a href="http://localhost:5000/swagger/v1/swagger.json" target="_blank" rel="noreferrer">http://localhost:5000/swagger/v1/swagger.json</a></p>
-      <div class="section-note">
-        <strong>How to use Swagger:</strong>
-        <ol>
-          <li>Open the Swagger URL.</li>
-          <li>Select the endpoint you want to test.</li>
-          <li>Click <strong>Try it out</strong>.</li>
-          <li>Fill in the request body.</li>
-          <li>Click <strong>Execute</strong>.</li>
-          <li>Read the response code and body.</li>
-        </ol>
-      </div>
-      <div class="section-note">
-        <strong>Login note:</strong> after a successful login, copy the JWT token and use it in protected endpoints as <code>Authorization: Bearer &lt;TOKEN&gt;</code>.
-      </div>
+      <div class="section-note"><strong>كيف تستخدمين Swagger:</strong><ol><li>افتحي رابط السويجر.</li><li>اختاري الـ endpoint الذي تريدين اختباره.</li><li>اضغطي <strong>Try it out</strong>.</li><li>املئي الـ request body.</li><li>اضغطي <strong>Execute</strong>.</li><li>اقرئي status code والـ response body.</li></ol></div>
+      <div class="section-note"><strong>ملاحظة الدخول:</strong> بعد نجاح تسجيل الدخول، انسخي الـ JWT token واستخدميه في الـ endpoints المحمية بهذه الصيغة: <code>Authorization: Bearer &lt;TOKEN&gt;</code>.</div>
     </div>
-
     <div class="card" id="code">
-      <h2>Code Explanation</h2>
-      <p>Use this section as the full speaking script during the presentation.</p>
-            <div class="codeblock">1. This project was built as a donations platform called Yad ElAwn.
-2. The database was prepared first, then the backend was connected to it using Entity Framework Core.
-3. Program.cs is the startup file. It registers controllers, services, repositories, JWT authentication, Swagger, and the SQL Server connection.
-4. ApplicationDbContext.cs maps the C# entities to the SQL tables and defines the relationships between them.
-5. The Models folder contains the entity classes that represent the database tables.
-6. The Dtos folder contains the request and response objects used by the API.
-7. The Controllers receive the HTTP request and send it to the correct service.
-8. The Services contain the business logic, validation, login flow, registration flow, and donation flow.
-9. The Repositories handle the data access layer and communicate with the database.
-10. JWT is used so the user gets a token after login and can access protected endpoints.
-11. BCrypt is used to hash passwords before storing them in the database.
-12. Transactions are used in registration and donation creation so the entire operation succeeds or fails together.
-13. Swagger is opened from http://localhost:5000/ and used to test all APIs.
-14. After login, the token is sent in protected requests using Authorization: Bearer &lt;TOKEN&gt;.
-15. The important feature flows are registration, login, donation creation, messages, notifications, and matches.
-16. The full runtime cycle is: frontend or Swagger -&gt; controller -&gt; service -&gt; repository -&gt; DbContext -&gt; SQL Server -&gt; response.</div>
+      <h2>شرح الكود</h2>
+      <p>استخدمي هذا الجزء كـ script كامل أثناء العرض.</p>
+      <div class="codeblock">1. تم بناء المشروع كموقع تبرعات باسم Yad ElAwn.
+2. تم تجهيز قاعدة البيانات أولًا ثم تم ربط الباك إند بها باستخدام Entity Framework Core.
+3. ملف Program.cs هو ملف التشغيل الرئيسي. فيه يتم تسجيل الخدمات، تفعيل Swagger، إعداد JWT Authentication، وربط SQL Server.
+4. ملف ApplicationDbContext.cs يربط الكلاسات بجداول قاعدة البيانات ويحدد العلاقات بينها.
+5. مجلد Models يحتوي على الكلاسات التي تمثل الجداول.
+6. مجلد Dtos يحتوي على أشكال الطلبات والردود التي تستخدمها الـ API.
+7. Controllers تستقبل HTTP requests وترسلها إلى الخدمات المناسبة.
+8. Services تحتوي على منطق الشغل، مثل تسجيل الدخول، التسجيل، وإنشاء التبرعات.
+9. Repositories تتعامل مع طبقة البيانات وتنفذ عمليات القراءة والكتابة.
+10. JWT يستخدم حتى يحصل المستخدم على token بعد تسجيل الدخول ويستطيع الدخول إلى الـ endpoints المحمية.
+11. BCrypt يستخدم لتشفير كلمات السر قبل تخزينها في قاعدة البيانات.
+12. Transactions تُستخدم في التسجيل وإنشاء التبرعات حتى تنجح العملية كلها أو تفشل كلها معًا.
+13. Swagger يفتح من http://localhost:5000/ ويستخدم لاختبار كل الـ APIs.
+14. بعد تسجيل الدخول، يتم إرسال التوكن في الطلبات المحمية بهذا الشكل: Authorization: Bearer &lt;TOKEN&gt;.
+15. أهم مسارات النظام هي: التسجيل، تسجيل الدخول، إنشاء التبرع، الرسائل، الإشعارات، والمطابقة.
+16. دورة التنفيذ الكاملة هي: Frontend أو Swagger -&gt; Controller -&gt; Service -&gt; Repository -&gt; DbContext -&gt; SQL Server -&gt; Response.</div>
     </div>
   </div>
 </body>
 </html>
-
